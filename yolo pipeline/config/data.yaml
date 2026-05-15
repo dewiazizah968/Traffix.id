@@ -1,0 +1,6 @@
+path: /root/.cache/kagglehub/datasets/boukraailyesali/traffic-road-object-detection-dataset-using-yolo/versions/1
+train: /root/.cache/kagglehub/datasets/boukraailyesali/traffic-road-object-detection-dataset-using-yolo/versions/1/train/images
+val: /root/.cache/kagglehub/datasets/boukraailyesali/traffic-road-object-detection-dataset-using-yolo/versions/1/val/images
+nc: 1
+names:
+- car
