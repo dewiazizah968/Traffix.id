@@ -216,3 +216,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+
+# CCTV collection outputs
+output_stage1_cctv/
+output_stage2_videos/
+*.mp4
+*.avi
+*.mkv
+.venv/
+__pycache__/
