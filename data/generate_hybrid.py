@@ -719,7 +719,7 @@ def main():
     validate_dataset(dataset)
 
     # Print summary
-    print_summary(df)
+    print_summary(dataset)
 
     # Save
     output_dir = os.path.dirname(os.path.abspath(args.output))
