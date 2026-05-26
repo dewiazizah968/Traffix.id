@@ -1,0 +1,54 @@
+# Data Dictionary — Traffix.id
+
+- `tick` : Urutan waktu simulasi per menit.
+- `timestamp_wib` : Timestamp simulasi zona WIB.
+- `intersectionId` : ID intersection traffic.
+- `vehicle_count_1min` : Jumlah kendaraan per menit.
+- `volume_veh_per_hour` : Estimasi volume kendaraan per jam.
+- `avg_speed_kmh` : Kecepatan rata-rata kendaraan.
+- `queue_length_veh` : Jumlah antrean kendaraan.
+- `wait_time_min` : Total waktu tunggu kendaraan.
+- `green_seconds` : Durasi lampu hijau.
+- `density_percent` : Persentase kepadatan traffic.
+- `weather_temp_c` : Temperatur lingkungan.
+- `accident_count` : Jumlah kecelakaan.
+- `roadwork_flag` : Indikator roadwork.
+- `event_flag` : Indikator event.
+- `date_only` : -
+- `is_holiday` : Indikator hari libur.
+- `is_weekend` : Indikator weekend.
+- `day_name` : -
+- `hour` : Jam.
+- `minute` : Menit.
+- `day` : Hari dalam bulan.
+- `day_of_week` : Hari dalam minggu.
+- `month` : Bulan.
+- `hour_sin` : Encoding siklik jam (sin).
+- `hour_cos` : Encoding siklik jam (cos).
+- `traffic_period` : Kategori periode traffic.
+- `congestion_level` : Kategori tingkat kemacetan.
+- `lag_1` : Volume 1 menit sebelumnya.
+- `lag_5` : Volume 5 menit sebelumnya.
+- `lag_15` : Volume 15 menit sebelumnya.
+- `lag_30` : Volume 30 menit sebelumnya.
+- `lag_60` : Volume 60 menit sebelumnya.
+- `lag_speed_15` : Kecepatan rata-rata 15 menit sebelumnya.
+- `lag_queue_15` : Queue length 15 menit sebelumnya.
+- `roll_mean_15` : Rolling mean 15 menit.
+- `roll_std_15` : Rolling std 15 menit.
+- `roll_min_15` : Rolling minimum 15 menit.
+- `roll_max_15` : Rolling maksimum 15 menit.
+- `roll_median_15` : Rolling median 15 menit.
+- `roll_mean_60` : Rolling mean 60 menit.
+- `roll_std_60` : Rolling std 60 menit.
+- `roll_min_60` : Rolling minimum 60 menit.
+- `roll_max_60` : Rolling maksimum 60 menit.
+- `delta_volume` : Perubahan volume traffic.
+- `weather_condition_Clear` : Indikator cuaca cerah.
+- `weather_condition_Cloudy` : Indikator cuaca berawan.
+- `weather_condition_Hot` : Indikator cuaca panas.
+- `weather_condition_Rain` : Indikator cuaca hujan.
+- `target_volume_15m` : Target forecasting 15 menit.
+- `target_volume_2h` : Target forecasting 2 jam.
+- `target_volume_4h` : Target forecasting 4 jam.
+- `weather_condition` : -
