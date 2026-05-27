@@ -1,0 +1,27 @@
+# Web framework
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+
+# Config & validation
+pydantic==2.7.1
+pydantic-settings==2.2.1
+python-dotenv==1.0.1
+
+# HTTP client (weather API, AI service calls)
+httpx==0.27.0
+
+# Data processing (for hybrid_traffic_7d.csv)
+pandas==2.2.2
+numpy==1.26.4
+
+# ML inference (installed but NOT imported in block 0.0)
+tensorflow==2.16.1
+scikit-learn==1.6.1
+joblib==1.4.2
+
+# Computer vision (YOLO integration - future block)
+opencv-python-headless==4.9.0.80
+
+# Testing
+pytest==8.2.0
+pytest-asyncio==0.23.6
