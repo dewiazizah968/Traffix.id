@@ -1,0 +1,68 @@
+{
+  "15m_optimized": {
+    "label": "LSTM_Optimized_15m",
+    "MAE": 506.5561,
+    "MSE": 490987.5228,
+    "RMSE": 700.705,
+    "MAPE": 20.6046,
+    "SMAPE": 20.5811,
+    "R2": 0.6712,
+    "Acc_Like": 79.3954,
+    "Within_15pct": 43.4968
+  },
+  "2h_optimized": {
+    "label": "LSTM_Opt_2h",
+    "MAE": 719.9393,
+    "MSE": 1210225.7345,
+    "RMSE": 1100.1026,
+    "MAPE": 26.9533,
+    "SMAPE": 27.3671,
+    "R2": 0.1952,
+    "Acc_Like": 73.0467,
+    "Within_15pct": 35.8209
+  },
+  "4h_optimized": {
+    "label": "LSTM_Opt_4h",
+    "MAE": 652.1516,
+    "MSE": 977600.6883,
+    "RMSE": 988.7369,
+    "MAPE": 25.8366,
+    "SMAPE": 25.5388,
+    "R2": 0.3489,
+    "Acc_Like": 74.1634,
+    "Within_15pct": 37.0291
+  },
+  "persistence": {
+    "label": "Persistence",
+    "MAE": 612.0718,
+    "MSE": 671633.5968,
+    "RMSE": 819.5325,
+    "MAPE": 26.0936,
+    "SMAPE": 24.9999,
+    "R2": 0.5502,
+    "Acc_Like": 73.9064,
+    "Within_15pct": 34.0441
+  },
+  "linear_reg": {
+    "label": "LinearRegression",
+    "MAE": 510.7235,
+    "MSE": 454189.5122,
+    "RMSE": 673.9358,
+    "MAPE": 22.4445,
+    "SMAPE": 20.9819,
+    "R2": 0.6958,
+    "Acc_Like": 77.5555,
+    "Within_15pct": 42.7861
+  },
+  "xgboost": {
+    "label": "XGBoost",
+    "MAE": 515.8998,
+    "MSE": 471679.2106,
+    "RMSE": 686.7891,
+    "MAPE": 22.3868,
+    "SMAPE": 20.926,
+    "R2": 0.6841,
+    "Acc_Like": 77.6132,
+    "Within_15pct": 42.9282
+  }
+}
