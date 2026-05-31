@@ -96,7 +96,7 @@ TARGET_2H  = 120
 TARGET_4H  = 240
 
 # ---- Incident probabilities (per tick) ----
-ACCIDENT_PROB     = 0.0003
+ACCIDENT_PROB     = 0.0015
 ACCIDENT_DURATION = 30
 
 ROADWORK_PROB     = 0.0002
@@ -701,7 +701,7 @@ def main():
         if os.path.exists(alternative):
             input_path = alternative
         else:
-            log.error("Input file not found.)
+            log.error("Input file not found.")
             sys.exit(1)
 
     log.info("Loading calibration data...")                  
@@ -719,7 +719,7 @@ def main():
     validate_dataset(dataset)
 
     # Print summary
-    print_summary(df)
+    print_summary(dataset)
 
     # Save
     output_dir = os.path.dirname(os.path.abspath(args.output))
