@@ -1,0 +1,815 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Frame Review CCTV</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 24px;
+                background: #f5f5f5;
+            }
+            h1 {
+                margin-bottom: 8px;
+            }
+            .note {
+                background: #fff3cd;
+                border: 1px solid #ffeeba;
+                padding: 12px;
+                margin-bottom: 16px;
+                line-height: 1.5;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                background: white;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                vertical-align: top;
+                font-size: 13px;
+            }
+            th {
+                background: #222;
+                color: white;
+                position: sticky;
+                top: 0;
+            }
+            img {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Frame Review CCTV</h1>
+
+        <div class="note">
+            Gunakan halaman ini untuk membaca overlay pada frame CCTV.
+            Buka file <b>metadata/frame_km_input.csv</b>, lalu isi kolom manual sesuai overlay.
+            Jika overlay berbentuk <b>KM 25+500</b>, isi <b>location_type = km</b>, <b>location_text = KM 25+500</b>, dan <b>km_text = 25+500</b>.
+            Jika overlay berbentuk <b>GT MERUYA 2B</b>, isi <b>location_type = gate</b>, <b>location_text = GT MERUYA 2B</b>, dan kosongkan <b>km_text</b>.
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Period</th>
+                    <th>Video File</th>
+                    <th>CCTV ID</th>
+                    <th>Timestamp WIB</th>
+                    <th>Frame</th>
+                    <th>Selected Frame</th>
+                    <th>Location Type</th>
+                    <th>Location Text</th>
+                    <th>KM Text</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td>1</td>
+            <td>malam</td>
+            <td>malam_cctv_001_20260518_003725.mp4</td>
+            <td>cctv_001</td>
+            <td>2026-05-18 00:37:25</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_001_20260518_003725_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_001_20260518_003725_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>2</td>
+            <td>malam</td>
+            <td>malam_cctv_002_20260518_003909.mp4</td>
+            <td>cctv_002</td>
+            <td>2026-05-18 00:39:09</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_002_20260518_003909_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_002_20260518_003909_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>3</td>
+            <td>malam</td>
+            <td>malam_cctv_003_20260518_004022.mp4</td>
+            <td>cctv_003</td>
+            <td>2026-05-18 00:40:22</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_003_20260518_004022_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_003_20260518_004022_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>4</td>
+            <td>malam</td>
+            <td>malam_cctv_004_20260518_004058.mp4</td>
+            <td>cctv_004</td>
+            <td>2026-05-18 00:40:58</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_004_20260518_004058_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_004_20260518_004058_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>5</td>
+            <td>malam</td>
+            <td>malam_cctv_005_20260518_004357.mp4</td>
+            <td>cctv_005</td>
+            <td>2026-05-18 00:43:57</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_005_20260518_004357_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_005_20260518_004357_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>6</td>
+            <td>malam</td>
+            <td>malam_cctv_006_20260518_033852.mp4</td>
+            <td>cctv_006</td>
+            <td>2026-05-18 03:38:52</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_006_20260518_033852_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_006_20260518_033852_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>7</td>
+            <td>malam</td>
+            <td>malam_cctv_007_20260518_033146.mp4</td>
+            <td>cctv_007</td>
+            <td>2026-05-18 03:31:46</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_007_20260518_033146_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_007_20260518_033146_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>8</td>
+            <td>malam</td>
+            <td>malam_cctv_008_20260518_004504.mp4</td>
+            <td>cctv_008</td>
+            <td>2026-05-18 00:45:04</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_008_20260518_004504_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_008_20260518_004504_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>9</td>
+            <td>malam</td>
+            <td>malam_cctv_009_20260518_004524.mp4</td>
+            <td>cctv_009</td>
+            <td>2026-05-18 00:45:24</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_009_20260518_004524_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_009_20260518_004524_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>10</td>
+            <td>malam</td>
+            <td>malam_cctv_010_20260518_004548.mp4</td>
+            <td>cctv_010</td>
+            <td>2026-05-18 00:45:48</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_010_20260518_004548_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_010_20260518_004548_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>11</td>
+            <td>malam</td>
+            <td>malam_cctv_011_20260518_004900.mp4</td>
+            <td>cctv_011</td>
+            <td>2026-05-18 00:49:00</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_011_20260518_004900_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_011_20260518_004900_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>12</td>
+            <td>malam</td>
+            <td>malam_cctv_012_20260518_032929.mp4</td>
+            <td>cctv_012</td>
+            <td>2026-05-18 03:29:29</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_012_20260518_032929_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_012_20260518_032929_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>13</td>
+            <td>malam</td>
+            <td>malam_cctv_013_20260518_033106.mp4</td>
+            <td>cctv_013</td>
+            <td>2026-05-18 03:31:06</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_013_20260518_033106_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_013_20260518_033106_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>14</td>
+            <td>malam</td>
+            <td>malam_cctv_014_20260518_033116.mp4</td>
+            <td>cctv_014</td>
+            <td>2026-05-18 03:31:16</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_014_20260518_033116_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_014_20260518_033116_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>15</td>
+            <td>malam</td>
+            <td>malam_cctv_015_20260518_033241.mp4</td>
+            <td>cctv_015</td>
+            <td>2026-05-18 03:32:41</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_015_20260518_033241_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_015_20260518_033241_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>16</td>
+            <td>malam</td>
+            <td>malam_cctv_016_20260518_033544.mp4</td>
+            <td>cctv_016</td>
+            <td>2026-05-18 03:35:44</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_016_20260518_033544_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_016_20260518_033544_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>17</td>
+            <td>malam</td>
+            <td>malam_cctv_017_20260518_033842.mp4</td>
+            <td>cctv_017</td>
+            <td>2026-05-18 03:38:42</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/malam/malam_cctv_017_20260518_033842_frame_3s.jpg" target="_blank">
+                    <img src="../frames/malam/malam_cctv_017_20260518_033842_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>18</td>
+            <td>pagi</td>
+            <td>pagi_cctv_001_20260518_070935.mp4</td>
+            <td>cctv_001</td>
+            <td>2026-05-18 07:09:35</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_001_20260518_070935_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_001_20260518_070935_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>19</td>
+            <td>pagi</td>
+            <td>pagi_cctv_002_20260518_070954.mp4</td>
+            <td>cctv_002</td>
+            <td>2026-05-18 07:09:54</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_002_20260518_070954_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_002_20260518_070954_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>20</td>
+            <td>pagi</td>
+            <td>pagi_cctv_003_20260518_071057.mp4</td>
+            <td>cctv_003</td>
+            <td>2026-05-18 07:10:57</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_003_20260518_071057_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_003_20260518_071057_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>21</td>
+            <td>pagi</td>
+            <td>pagi_cctv_004_20260518_071356.mp4</td>
+            <td>cctv_004</td>
+            <td>2026-05-18 07:13:56</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_004_20260518_071356_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_004_20260518_071356_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>22</td>
+            <td>pagi</td>
+            <td>pagi_cctv_005_20260518_072312.mp4</td>
+            <td>cctv_005</td>
+            <td>2026-05-18 07:23:12</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_005_20260518_072312_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_005_20260518_072312_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>23</td>
+            <td>pagi</td>
+            <td>pagi_cctv_006_20260518_071450.mp4</td>
+            <td>cctv_006</td>
+            <td>2026-05-18 07:14:50</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_006_20260518_071450_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_006_20260518_071450_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>24</td>
+            <td>pagi</td>
+            <td>pagi_cctv_007_20260516_072612.mp4</td>
+            <td>cctv_007</td>
+            <td>2026-05-16 07:26:12</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_007_20260516_072612_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_007_20260516_072612_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>25</td>
+            <td>pagi</td>
+            <td>pagi_cctv_008_20260518_071556.mp4</td>
+            <td>cctv_008</td>
+            <td>2026-05-18 07:15:56</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_008_20260518_071556_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_008_20260518_071556_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>26</td>
+            <td>pagi</td>
+            <td>pagi_cctv_009_20260518_071625.mp4</td>
+            <td>cctv_009</td>
+            <td>2026-05-18 07:16:25</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_009_20260518_071625_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_009_20260518_071625_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>27</td>
+            <td>pagi</td>
+            <td>pagi_cctv_010_20260518_072024.mp4</td>
+            <td>cctv_010</td>
+            <td>2026-05-18 07:20:24</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_010_20260518_072024_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_010_20260518_072024_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>28</td>
+            <td>pagi</td>
+            <td>pagi_cctv_011_20260518_072213.mp4</td>
+            <td>cctv_011</td>
+            <td>2026-05-18 07:22:13</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_011_20260518_072213_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_011_20260518_072213_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>29</td>
+            <td>pagi</td>
+            <td>pagi_cctv_012_20260518_072237.mp4</td>
+            <td>cctv_012</td>
+            <td>2026-05-18 07:22:37</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_012_20260518_072237_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_012_20260518_072237_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>30</td>
+            <td>pagi</td>
+            <td>pagi_cctv_013_20260518_072249.mp4</td>
+            <td>cctv_013</td>
+            <td>2026-05-18 07:22:49</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_013_20260518_072249_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_013_20260518_072249_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>31</td>
+            <td>pagi</td>
+            <td>pagi_cctv_014_20260518_072255.mp4</td>
+            <td>cctv_014</td>
+            <td>2026-05-18 07:22:55</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_014_20260518_072255_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_014_20260518_072255_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>32</td>
+            <td>pagi</td>
+            <td>pagi_cctv_015_20260518_072703.mp4</td>
+            <td>cctv_015</td>
+            <td>2026-05-18 07:27:03</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_015_20260518_072703_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_015_20260518_072703_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>33</td>
+            <td>pagi</td>
+            <td>pagi_cctv_016_20260518_072924.mp4</td>
+            <td>cctv_016</td>
+            <td>2026-05-18 07:29:24</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/pagi/pagi_cctv_016_20260518_072924_frame_3s.jpg" target="_blank">
+                    <img src="../frames/pagi/pagi_cctv_016_20260518_072924_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>34</td>
+            <td>siang</td>
+            <td>siang_cctv_001_20260518_163906.mp4</td>
+            <td>cctv_001</td>
+            <td>2026-05-18 16:39:06</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/siang/siang_cctv_001_20260518_163906_frame_3s.jpg" target="_blank">
+                    <img src="../frames/siang/siang_cctv_001_20260518_163906_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>35</td>
+            <td>siang</td>
+            <td>siang_cctv_002_20260518_164844.mp4</td>
+            <td>cctv_002</td>
+            <td>2026-05-18 16:48:44</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/siang/siang_cctv_002_20260518_164844_frame_3s.jpg" target="_blank">
+                    <img src="../frames/siang/siang_cctv_002_20260518_164844_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>36</td>
+            <td>siang</td>
+            <td>siang_cctv_003_20260518_165921.mp4</td>
+            <td>cctv_003</td>
+            <td>2026-05-18 16:59:21</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/siang/siang_cctv_003_20260518_165921_frame_3s.jpg" target="_blank">
+                    <img src="../frames/siang/siang_cctv_003_20260518_165921_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>37</td>
+            <td>siang</td>
+            <td>siang_cctv_004_20260518_170659.mp4</td>
+            <td>cctv_004</td>
+            <td>2026-05-18 17:06:59</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/siang/siang_cctv_004_20260518_170659_frame_3s.jpg" target="_blank">
+                    <img src="../frames/siang/siang_cctv_004_20260518_170659_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>38</td>
+            <td>siang</td>
+            <td>siang_cctv_005_20260518_171425.mp4</td>
+            <td>cctv_005</td>
+            <td>2026-05-18 17:14:25</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/siang/siang_cctv_005_20260518_171425_frame_3s.jpg" target="_blank">
+                    <img src="../frames/siang/siang_cctv_005_20260518_171425_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>39</td>
+            <td>siang</td>
+            <td>siang_cctv_006_20260518_161610.mp4</td>
+            <td>cctv_006</td>
+            <td>2026-05-18 16:16:10</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/siang/siang_cctv_006_20260518_161610_frame_3s.jpg" target="_blank">
+                    <img src="../frames/siang/siang_cctv_006_20260518_161610_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>40</td>
+            <td>siang</td>
+            <td>siang_cctv_007_20260518_160452.mp4</td>
+            <td>cctv_007</td>
+            <td>2026-05-18 16:04:52</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/siang/siang_cctv_007_20260518_160452_frame_3s.jpg" target="_blank">
+                    <img src="../frames/siang/siang_cctv_007_20260518_160452_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+        <tr>
+            <td>41</td>
+            <td>siang</td>
+            <td>siang_cctv_008_20260518_151934.mp4</td>
+            <td>cctv_008</td>
+            <td>2026-05-18 15:19:34</td>
+            <td>3s</td>
+            <td>
+                <a href="../frames/siang/siang_cctv_008_20260518_151934_frame_3s.jpg" target="_blank">
+                    <img src="../frames/siang/siang_cctv_008_20260518_151934_frame_3s.jpg" style="width: 430px; border: 1px solid #ccc;">
+                </a>
+            </td>
+            <td></td>
+            <td><b></b></td>
+            <td><b></b></td>
+            <td>need_location_input</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    
