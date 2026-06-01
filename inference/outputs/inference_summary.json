@@ -1,0 +1,467 @@
+{
+  "total_videos_processed": 21,
+  "total_videos_failed": 0,
+  "failed_videos": [],
+  "seq_len_used": 60,
+  "horizon": "15m",
+  "model_mape_15m": 20.6046,
+  "feature_count": 41,
+  "runtime_config": {
+    "DEMO_MODE": false,
+    "MAX_VIDEOS_PER_PERIOD": 2,
+    "MAX_FRAMES_PER_VIDEO": 300,
+    "FRAME_STRIDE": 5,
+    "YOLO_IMGSZ": 416,
+    "YOLO_CONF": 0.2,
+    "SAVE_DETECTED_VIDEO": true,
+    "SAVE_EVERY_N_FRAMES": 2
+  },
+  "weather_sources": [
+    ""
+  ],
+  "videos": [
+    {
+      "camera_id": "CAM_001",
+      "source_video": "pagi_cctv_001_20260518_070935.mp4",
+      "date": "5/18/2026",
+      "time": "6:09:33",
+      "period": "Morning Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.6,
+      "vehicle_count": 6,
+      "avg_speed_kmh": 49.02,
+      "density_percent": 5.49,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 2027.3,
+      "confidence_range": {
+        "lower_bound": 1609.5829442000002,
+        "upper_bound": 2445.0170558
+      }
+    },
+    {
+      "camera_id": "CAM_002",
+      "source_video": "pagi_cctv_002_20260518_070954.mp4",
+      "date": "5/18/2026",
+      "time": "6:15:26",
+      "period": "Morning Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 26.8,
+      "vehicle_count": 33,
+      "avg_speed_kmh": 45.07,
+      "density_percent": 28.53,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 2025.24,
+      "confidence_range": {
+        "lower_bound": 1607.94739896,
+        "upper_bound": 2442.53260104
+      }
+    },
+    {
+      "camera_id": "CAM_003",
+      "source_video": "pagi_cctv_004_20260518_071356.mp4",
+      "date": "5/18/2026",
+      "time": "6:18:01",
+      "period": "Morning Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.6,
+      "vehicle_count": 19,
+      "avg_speed_kmh": 42.65,
+      "density_percent": 16.34,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 2038.98,
+      "confidence_range": {
+        "lower_bound": 1618.8563269200001,
+        "upper_bound": 2459.10367308
+      }
+    },
+    {
+      "camera_id": "CAM_004",
+      "source_video": "pagi_cctv_006_20260518_071450.mp4",
+      "date": "5/18/2026",
+      "time": "6:20:24",
+      "period": "Morning Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.2,
+      "vehicle_count": 37,
+      "avg_speed_kmh": 20.22,
+      "density_percent": 37.5,
+      "congestion_level": "Severe",
+      "predicted_volume_15m": 2152.58,
+      "confidence_range": {
+        "lower_bound": 1709.04950132,
+        "upper_bound": 2596.1104986799996
+      }
+    },
+    {
+      "camera_id": "CAM_005",
+      "source_video": "pagi_cctv_009_20260518_071625.mp4",
+      "date": "5/18/2026",
+      "time": "6:20:49",
+      "period": "Morning Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.6,
+      "vehicle_count": 15,
+      "avg_speed_kmh": 44.89,
+      "density_percent": 13.96,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 2525.82,
+      "confidence_range": {
+        "lower_bound": 2005.3848922800003,
+        "upper_bound": 3046.25510772
+      }
+    },
+    {
+      "camera_id": "CAM_006",
+      "source_video": "pagi_cctv_014_20260518_072255.mp4",
+      "date": "5/18/2026",
+      "time": "6:23:39",
+      "period": "Morning Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.2,
+      "vehicle_count": 8,
+      "avg_speed_kmh": 28.33,
+      "density_percent": 7.25,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 2105.13,
+      "confidence_range": {
+        "lower_bound": 1671.3763840200002,
+        "upper_bound": 2538.88361598
+      }
+    },
+    {
+      "camera_id": "CAM_007",
+      "source_video": "pagi_cctv_015_20260518_072703.mp4",
+      "date": "5/18/2026",
+      "time": "6:39:21",
+      "period": "Morning Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.2,
+      "vehicle_count": 15,
+      "avg_speed_kmh": 14.89,
+      "density_percent": 12.66,
+      "congestion_level": "Medium",
+      "predicted_volume_15m": 1962.68,
+      "confidence_range": {
+        "lower_bound": 1558.2776367200001,
+        "upper_bound": 2367.08236328
+      }
+    },
+    {
+      "camera_id": "CAM_008",
+      "source_video": "siang_cctv_001_20260518_163906.mp4",
+      "date": "5/18/2026",
+      "time": "15:49:02",
+      "period": "Daytime",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Rain",
+      "weather_temp_c": 29.9,
+      "vehicle_count": 77,
+      "avg_speed_kmh": 54.5,
+      "density_percent": 50.83,
+      "congestion_level": "Medium",
+      "predicted_volume_15m": 1949.69,
+      "confidence_range": {
+        "lower_bound": 1547.9641742600002,
+        "upper_bound": 2351.41582574
+      }
+    },
+    {
+      "camera_id": "CAM_009",
+      "source_video": "siang_cctv_003_20260518_165921.mp4",
+      "date": "5/18/2026",
+      "time": "16:17:21",
+      "period": "Evening Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Clear",
+      "weather_temp_c": 29.7,
+      "vehicle_count": 11,
+      "avg_speed_kmh": 20.41,
+      "density_percent": 9.22,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 1966.05,
+      "confidence_range": {
+        "lower_bound": 1560.9532617,
+        "upper_bound": 2371.1467383
+      }
+    },
+    {
+      "camera_id": "CAM_010",
+      "source_video": "siang_cctv_004_20260518_170659.mp4",
+      "date": "5/18/2026",
+      "time": "16:13:00",
+      "period": "Evening Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Clear",
+      "weather_temp_c": 29.9,
+      "vehicle_count": 101,
+      "avg_speed_kmh": 38.01,
+      "density_percent": 51.87,
+      "congestion_level": "Medium",
+      "predicted_volume_15m": 2777.89,
+      "confidence_range": {
+        "lower_bound": 2205.51687706,
+        "upper_bound": 3350.26312294
+      }
+    },
+    {
+      "camera_id": "CAM_011",
+      "source_video": "siang_cctv_005_20260518_171425.mp4",
+      "date": "5/18/2026",
+      "time": "16:24:23",
+      "period": "Evening Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Clear",
+      "weather_temp_c": 29.9,
+      "vehicle_count": 69,
+      "avg_speed_kmh": 28.06,
+      "density_percent": 50.67,
+      "congestion_level": "High",
+      "predicted_volume_15m": 2077.46,
+      "confidence_range": {
+        "lower_bound": 1649.40767684,
+        "upper_bound": 2505.51232316
+      }
+    },
+    {
+      "camera_id": "CAM_012",
+      "source_video": "siang_cctv_007_20260518_160452.mp4",
+      "date": "5/18/2026",
+      "time": "15:08:58",
+      "period": "Daytime",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 30.5,
+      "vehicle_count": 62,
+      "avg_speed_kmh": 71.86,
+      "density_percent": 50.3,
+      "congestion_level": "Medium",
+      "predicted_volume_15m": 2179.68,
+      "confidence_range": {
+        "lower_bound": 1730.5656547199999,
+        "upper_bound": 2628.7943452799996
+      }
+    },
+    {
+      "camera_id": "CAM_013",
+      "source_video": "siang_cctv_008_20260518_151934.mp4",
+      "date": "5/18/2026",
+      "time": "14:23:40",
+      "period": "Daytime",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Rain",
+      "weather_temp_c": 31.3,
+      "vehicle_count": 13,
+      "avg_speed_kmh": 78.87,
+      "density_percent": 11.23,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 3086.65,
+      "confidence_range": {
+        "lower_bound": 2450.6581141,
+        "upper_bound": 3722.6418859
+      }
+    },
+    {
+      "camera_id": "CAM_014",
+      "source_video": "malam_cctv_001_20260518_003725.mp4",
+      "date": "5/18/2026",
+      "time": "23:43:00 PM",
+      "period": "Late Night",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 26.5,
+      "vehicle_count": 10,
+      "avg_speed_kmh": 2.93,
+      "density_percent": 10.38,
+      "congestion_level": "High",
+      "predicted_volume_15m": 1970.9,
+      "confidence_range": {
+        "lower_bound": 1564.8039386000003,
+        "upper_bound": 2376.9960614
+      }
+    },
+    {
+      "camera_id": "CAM_015",
+      "source_video": "malam_cctv_003_20260518_004022.mp4",
+      "date": "5/18/2026",
+      "time": "23:44:47 PM",
+      "period": "Late Night",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.9,
+      "vehicle_count": 2,
+      "avg_speed_kmh": 79.9,
+      "density_percent": 1.67,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 2249.35,
+      "confidence_range": {
+        "lower_bound": 1785.8804299,
+        "upper_bound": 2712.8195701
+      }
+    },
+    {
+      "camera_id": "CAM_016",
+      "source_video": "malam_cctv_005_20260518_004357.mp4",
+      "date": "5/18/2026",
+      "time": "23:44:00 PM",
+      "period": "Late Night",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.9,
+      "vehicle_count": 19,
+      "avg_speed_kmh": 11.55,
+      "density_percent": 27.19,
+      "congestion_level": "Severe",
+      "predicted_volume_15m": 2107.72,
+      "confidence_range": {
+        "lower_bound": 1673.43272488,
+        "upper_bound": 2542.0072751199996
+      }
+    },
+    {
+      "camera_id": "CAM_017",
+      "source_video": "malam_cctv_007_20260518_033146.mp4",
+      "date": "5/18/2026",
+      "time": "2:32:30",
+      "period": "Late Night",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 24.5,
+      "vehicle_count": 6,
+      "avg_speed_kmh": 32.93,
+      "density_percent": 5.01,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 1987.45,
+      "confidence_range": {
+        "lower_bound": 1577.9438773000002,
+        "upper_bound": 2396.9561227
+      }
+    },
+    {
+      "camera_id": "CAM_018",
+      "source_video": "malam_cctv_008_20260518_004504.mp4",
+      "date": "5/18/2026",
+      "time": "23:49:10 PM",
+      "period": "Late Night",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.9,
+      "vehicle_count": 0,
+      "avg_speed_kmh": 80.0,
+      "density_percent": 0.0,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 2273.47,
+      "confidence_range": {
+        "lower_bound": 1805.03060038,
+        "upper_bound": 2741.9093996199995
+      }
+    },
+    {
+      "camera_id": "CAM_019",
+      "source_video": "malam_cctv_009_20260518_004524.mp4",
+      "date": "5/18/2026",
+      "time": "23:58:54 PM",
+      "period": "Late Night",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.5,
+      "vehicle_count": 1,
+      "avg_speed_kmh": 0.5,
+      "density_percent": 0.89,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 1955.38,
+      "confidence_range": {
+        "lower_bound": 1552.4817725200003,
+        "upper_bound": 2358.27822748
+      }
+    },
+    {
+      "camera_id": "CAM_020",
+      "source_video": "malam_cctv_014_20260518_033116.mp4",
+      "date": "5/18/2026",
+      "time": "2:35:23",
+      "period": "Late Night",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 24.9,
+      "vehicle_count": 0,
+      "avg_speed_kmh": 80.0,
+      "density_percent": 0.0,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 2219.45,
+      "confidence_range": {
+        "lower_bound": 1762.1412053,
+        "upper_bound": 2676.7587946999997
+      }
+    },
+    {
+      "camera_id": "CAM_021",
+      "source_video": "malam_cctv_016_20260518_033544.mp4",
+      "date": "5/18/2026",
+      "time": "2:36:00",
+      "period": "Late Night",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 24.9,
+      "vehicle_count": 12,
+      "avg_speed_kmh": 4.48,
+      "density_percent": 12.21,
+      "congestion_level": "High",
+      "predicted_volume_15m": 1950.59,
+      "confidence_range": {
+        "lower_bound": 1548.67873286,
+        "upper_bound": 2352.50126714
+      }
+    }
+  ],
+  "lstm_validation": {
+    "model_type": "LSTM",
+    "model_mape_15m": 20.6046,
+    "prediction_distribution": {
+      "min_prediction": 1949.69,
+      "max_prediction": 3086.65,
+      "mean_prediction": 2170.926666666666,
+      "std_deviation": 287.1559456584246,
+      "prediction_spread": 1136.96,
+      "relative_spread_percent": 52.37210530679681
+    },
+    "global_confidence_range": {
+      "lower_bound_mean": 1723.615910706666,
+      "upper_bound_mean": 2618.2374226266656
+    },
+    "correlation_vehicle_count_prediction": 0.20096098179405542,
+    "analysis": {
+      "prediction_variability": "High",
+      "output_collapse_detected": false,
+      "correlation_strength": "Moderate",
+      "interpretation": "Vehicle count contributes significantly"
+    }
+  }
+}
