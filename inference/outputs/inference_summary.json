@@ -2,9 +2,9 @@
   "total_videos_processed": 21,
   "total_videos_failed": 0,
   "failed_videos": [],
-  "seq_len_used": 60,
+  "seq_len_used": 15,
   "horizon": "15m",
-  "model_mape_15m": 20.6046,
+  "model_mape_15m": 21.8059,
   "feature_count": 41,
   "runtime_config": {
     "DEMO_MODE": false,
@@ -34,10 +34,10 @@
       "avg_speed_kmh": 49.02,
       "density_percent": 5.49,
       "congestion_level": "Low",
-      "predicted_volume_15m": 2027.3,
+      "predicted_volume_15m": 557.77,
       "confidence_range": {
-        "lower_bound": 1609.5829442000002,
-        "upper_bound": 2445.0170558
+        "lower_bound": 436.14323157,
+        "upper_bound": 679.39676843
       }
     },
     {
@@ -54,10 +54,10 @@
       "avg_speed_kmh": 45.07,
       "density_percent": 28.53,
       "congestion_level": "Low",
-      "predicted_volume_15m": 2025.24,
+      "predicted_volume_15m": 1272.6,
       "confidence_range": {
-        "lower_bound": 1607.94739896,
-        "upper_bound": 2442.53260104
+        "lower_bound": 995.0981165999999,
+        "upper_bound": 1550.1018834
       }
     },
     {
@@ -74,10 +74,10 @@
       "avg_speed_kmh": 42.65,
       "density_percent": 16.34,
       "congestion_level": "Low",
-      "predicted_volume_15m": 2038.98,
+      "predicted_volume_15m": 689.05,
       "confidence_range": {
-        "lower_bound": 1618.8563269200001,
-        "upper_bound": 2459.10367308
+        "lower_bound": 538.79644605,
+        "upper_bound": 839.3035539499999
       }
     },
     {
@@ -94,10 +94,10 @@
       "avg_speed_kmh": 20.22,
       "density_percent": 37.5,
       "congestion_level": "Severe",
-      "predicted_volume_15m": 2152.58,
+      "predicted_volume_15m": 2506.37,
       "confidence_range": {
-        "lower_bound": 1709.04950132,
-        "upper_bound": 2596.1104986799996
+        "lower_bound": 1959.8334641699998,
+        "upper_bound": 3052.90653583
       }
     },
     {
@@ -114,10 +114,10 @@
       "avg_speed_kmh": 44.89,
       "density_percent": 13.96,
       "congestion_level": "Low",
-      "predicted_volume_15m": 2525.82,
+      "predicted_volume_15m": 3698.47,
       "confidence_range": {
-        "lower_bound": 2005.3848922800003,
-        "upper_bound": 3046.25510772
+        "lower_bound": 2891.98533027,
+        "upper_bound": 4504.95466973
       }
     },
     {
@@ -134,10 +134,10 @@
       "avg_speed_kmh": 28.33,
       "density_percent": 7.25,
       "congestion_level": "Low",
-      "predicted_volume_15m": 2105.13,
+      "predicted_volume_15m": 1521.72,
       "confidence_range": {
-        "lower_bound": 1671.3763840200002,
-        "upper_bound": 2538.88361598
+        "lower_bound": 1189.89525852,
+        "upper_bound": 1853.54474148
       }
     },
     {
@@ -154,10 +154,10 @@
       "avg_speed_kmh": 14.89,
       "density_percent": 12.66,
       "congestion_level": "Medium",
-      "predicted_volume_15m": 1962.68,
+      "predicted_volume_15m": 1103.86,
       "confidence_range": {
-        "lower_bound": 1558.2776367200001,
-        "upper_bound": 2367.08236328
+        "lower_bound": 863.1533922599999,
+        "upper_bound": 1344.5666077399999
       }
     },
     {
@@ -174,10 +174,10 @@
       "avg_speed_kmh": 54.5,
       "density_percent": 50.83,
       "congestion_level": "Medium",
-      "predicted_volume_15m": 1949.69,
+      "predicted_volume_15m": 623.68,
       "confidence_range": {
-        "lower_bound": 1547.9641742600002,
-        "upper_bound": 2351.41582574
+        "lower_bound": 487.68096288,
+        "upper_bound": 759.67903712
       }
     },
     {
@@ -194,10 +194,10 @@
       "avg_speed_kmh": 20.41,
       "density_percent": 9.22,
       "congestion_level": "Low",
-      "predicted_volume_15m": 1966.05,
+      "predicted_volume_15m": 511.47,
       "confidence_range": {
-        "lower_bound": 1560.9532617,
-        "upper_bound": 2371.1467383
+        "lower_bound": 399.93936327,
+        "upper_bound": 623.00063673
       }
     },
     {
@@ -214,10 +214,10 @@
       "avg_speed_kmh": 38.01,
       "density_percent": 51.87,
       "congestion_level": "Medium",
-      "predicted_volume_15m": 2777.89,
+      "predicted_volume_15m": 4267.42,
       "confidence_range": {
-        "lower_bound": 2205.51687706,
-        "upper_bound": 3350.26312294
+        "lower_bound": 3336.87066222,
+        "upper_bound": 5197.96933778
       }
     },
     {
@@ -234,10 +234,10 @@
       "avg_speed_kmh": 28.06,
       "density_percent": 50.67,
       "congestion_level": "High",
-      "predicted_volume_15m": 2077.46,
+      "predicted_volume_15m": 941.44,
       "confidence_range": {
-        "lower_bound": 1649.40767684,
-        "upper_bound": 2505.51232316
+        "lower_bound": 736.15053504,
+        "upper_bound": 1146.72946496
       }
     },
     {
@@ -254,10 +254,10 @@
       "avg_speed_kmh": 71.86,
       "density_percent": 50.3,
       "congestion_level": "Medium",
-      "predicted_volume_15m": 2179.68,
+      "predicted_volume_15m": 546.18,
       "confidence_range": {
-        "lower_bound": 1730.5656547199999,
-        "upper_bound": 2628.7943452799996
+        "lower_bound": 427.08053537999996,
+        "upper_bound": 665.2794646199999
       }
     },
     {
@@ -274,10 +274,10 @@
       "avg_speed_kmh": 78.87,
       "density_percent": 11.23,
       "congestion_level": "Low",
-      "predicted_volume_15m": 3086.65,
+      "predicted_volume_15m": 3174.12,
       "confidence_range": {
-        "lower_bound": 2450.6581141,
-        "upper_bound": 3722.6418859
+        "lower_bound": 2481.9745669199997,
+        "upper_bound": 3866.26543308
       }
     },
     {
@@ -294,10 +294,10 @@
       "avg_speed_kmh": 2.93,
       "density_percent": 10.38,
       "congestion_level": "High",
-      "predicted_volume_15m": 1970.9,
+      "predicted_volume_15m": 1066.26,
       "confidence_range": {
-        "lower_bound": 1564.8039386000003,
-        "upper_bound": 2376.9960614
+        "lower_bound": 833.75241066,
+        "upper_bound": 1298.76758934
       }
     },
     {
@@ -314,10 +314,10 @@
       "avg_speed_kmh": 79.9,
       "density_percent": 1.67,
       "congestion_level": "Low",
-      "predicted_volume_15m": 2249.35,
+      "predicted_volume_15m": 297.29,
       "confidence_range": {
-        "lower_bound": 1785.8804299,
-        "upper_bound": 2712.8195701
+        "lower_bound": 232.46323989,
+        "upper_bound": 362.11676011000003
       }
     },
     {
@@ -334,10 +334,10 @@
       "avg_speed_kmh": 11.55,
       "density_percent": 27.19,
       "congestion_level": "Severe",
-      "predicted_volume_15m": 2107.72,
+      "predicted_volume_15m": 1360.56,
       "confidence_range": {
-        "lower_bound": 1673.43272488,
-        "upper_bound": 2542.0072751199996
+        "lower_bound": 1063.87764696,
+        "upper_bound": 1657.24235304
       }
     },
     {
@@ -354,10 +354,10 @@
       "avg_speed_kmh": 32.93,
       "density_percent": 5.01,
       "congestion_level": "Low",
-      "predicted_volume_15m": 1987.45,
+      "predicted_volume_15m": 908.96,
       "confidence_range": {
-        "lower_bound": 1577.9438773000002,
-        "upper_bound": 2396.9561227
+        "lower_bound": 710.75309136,
+        "upper_bound": 1107.16690864
       }
     },
     {
@@ -374,10 +374,10 @@
       "avg_speed_kmh": 80.0,
       "density_percent": 0.0,
       "congestion_level": "Low",
-      "predicted_volume_15m": 2273.47,
+      "predicted_volume_15m": 294.11,
       "confidence_range": {
-        "lower_bound": 1805.03060038,
-        "upper_bound": 2741.9093996199995
+        "lower_bound": 229.97666751,
+        "upper_bound": 358.24333249
       }
     },
     {
@@ -394,10 +394,10 @@
       "avg_speed_kmh": 0.5,
       "density_percent": 0.89,
       "congestion_level": "Low",
-      "predicted_volume_15m": 1955.38,
+      "predicted_volume_15m": 1079.16,
       "confidence_range": {
-        "lower_bound": 1552.4817725200003,
-        "upper_bound": 2358.27822748
+        "lower_bound": 843.83944956,
+        "upper_bound": 1314.4805504400001
       }
     },
     {
@@ -414,10 +414,10 @@
       "avg_speed_kmh": 80.0,
       "density_percent": 0.0,
       "congestion_level": "Low",
-      "predicted_volume_15m": 2219.45,
+      "predicted_volume_15m": 225.63,
       "confidence_range": {
-        "lower_bound": 1762.1412053,
-        "upper_bound": 2676.7587946999997
+        "lower_bound": 176.42934782999998,
+        "upper_bound": 274.83065217
       }
     },
     {
@@ -434,29 +434,29 @@
       "avg_speed_kmh": 4.48,
       "density_percent": 12.21,
       "congestion_level": "High",
-      "predicted_volume_15m": 1950.59,
+      "predicted_volume_15m": 1036.52,
       "confidence_range": {
-        "lower_bound": 1548.67873286,
-        "upper_bound": 2352.50126714
+        "lower_bound": 810.49748532,
+        "upper_bound": 1262.54251468
       }
     }
   ],
   "lstm_validation": {
     "model_type": "LSTM",
-    "model_mape_15m": 20.6046,
+    "model_mape_15m": 21.8059,
     "prediction_distribution": {
-      "min_prediction": 1949.69,
-      "max_prediction": 3086.65,
-      "mean_prediction": 2170.926666666666,
-      "std_deviation": 287.1559456584246,
-      "prediction_spread": 1136.96,
-      "relative_spread_percent": 52.37210530679681
+      "min_prediction": 225.63,
+      "max_prediction": 4267.42,
+      "mean_prediction": 1318.2209523809524,
+      "std_deviation": 1108.589538836688,
+      "prediction_spread": 4041.79,
+      "relative_spread_percent": 306.6094490987854
     },
     "global_confidence_range": {
-      "lower_bound_mean": 1723.615910706666,
-      "upper_bound_mean": 2618.2374226266656
+      "lower_bound_mean": 1030.7710097257143,
+      "upper_bound_mean": 1605.6708950361906
     },
-    "correlation_vehicle_count_prediction": 0.20096098179405542,
+    "correlation_vehicle_count_prediction": 0.36318355512344397,
     "analysis": {
       "prediction_variability": "High",
       "output_collapse_detected": false,
