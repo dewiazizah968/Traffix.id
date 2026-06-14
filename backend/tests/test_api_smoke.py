@@ -61,7 +61,18 @@ def test_recommendations_weather_and_camera_routes(api_client):
     assert cameras.status_code == 200
     camera_data = _data(cameras)
     assert "yolo_ready" in camera_data
-    assert camera_data["configured_cameras"] == 4
+    assert camera_data["configured_cameras"] == 11
+    assert camera_data["metadata_loaded"] is True
+    assert camera_data["prediction_output_loaded"] is True
+    assert camera_data["prediction_output_source"] == "json"
+
+    camera_list = api_client.get("/api/v1/cameras")
+    assert camera_list.status_code == 200
+    first_camera = _data(camera_list)["cameras"][0]
+    assert first_camera["intersection_name"]
+    assert first_camera["video_url"].startswith("/api/v1/cameras/videos/")
+    assert set(first_camera["predictions"]) == {"15m", "2h", "4h"}
+    assert first_camera["prediction_source"] == "lstm-output-json"
 
 
 def test_simulation_status_endpoint(api_client):

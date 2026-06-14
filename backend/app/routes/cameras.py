@@ -1,6 +1,7 @@
 ﻿"""Camera and YOLO readiness routes."""
 
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, HTTPException, Request
+from fastapi.responses import FileResponse
 
 from app.services.camera_service import camera_service
 from core.responses import success_response
@@ -54,4 +55,21 @@ async def list_cameras(request: Request) -> StandardSuccessResponse:
         message="Camera slots retrieved",
         data={"count": len(cameras), "cameras": cameras},
         request_id=request.state.request_id,
+    )
+
+
+@router.get(
+    "/videos/{period}/{filename}",
+    summary="Get Camera Video",
+    description="Serves a recorded CCTV video from backend-managed storage.",
+)
+async def get_camera_video(period: str, filename: str) -> FileResponse:
+    """Return a recorded CCTV video file when available."""
+    video_path = camera_service.resolve_video_path(period, filename)
+    if video_path is None:
+        raise HTTPException(status_code=404, detail="Video file not found")
+    return FileResponse(
+        video_path,
+        media_type="video/mp4",
+        filename=filename,
     )

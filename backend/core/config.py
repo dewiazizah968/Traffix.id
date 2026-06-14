@@ -191,6 +191,14 @@ class Settings(BaseSettings):
         default="../data/data_process/feature_columns.json",
         description="Path to the Data team feature column manifest",
     )
+    prediction_output_path: str = Field(
+        default="../inference/outputs/prediction_output.csv",
+        description="Path to the latest LSTM video prediction output",
+    )
+    prediction_output_json_path: str = Field(
+        default="../inference/outputs/prediction_output.json",
+        description="Path to the latest LSTM video prediction JSON output",
+    )
 
     # Simulation
     simulation_auto_start: bool = Field(
@@ -218,8 +226,20 @@ class Settings(BaseSettings):
         description="Enable live camera input for YOLO integration",
     )
     max_cameras: int = Field(
-        default=8,
+        default=16,
         description="Maximum number of camera streams supported",
+    )
+    camera_metadata_path: str = Field(
+        default="../inference_data/data_video/metadata/video_metadata_with_coordinates.csv",
+        description="Path to validated CCTV video metadata",
+    )
+    camera_video_root_path: str = Field(
+        default="../inference_data/data_video/video_input",
+        description="Path to backend-hosted CCTV video files",
+    )
+    camera_video_library_url: str = Field(
+        default="https://drive.google.com/drive/folders/1qJQ_B9wZP_kuzXoqaEtjVzBwLJTw3a0g?usp=sharing",
+        description="Fallback external video library URL",
     )
 
     @field_validator("cors_origins", mode="before")
