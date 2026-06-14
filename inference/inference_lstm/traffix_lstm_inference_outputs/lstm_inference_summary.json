@@ -1,0 +1,883 @@
+{
+  "total_rows_processed": 21,
+  "seq_len_used": 15,
+  "feature_count": 41,
+  "horizons": [
+    "15m",
+    "2h",
+    "4h"
+  ],
+  "horizon_mape": {
+    "15m": 21.8059,
+    "2h": 27.035,
+    "4h": 32.492
+  },
+  "horizon_stats": {
+    "15m": {
+      "model_mape": 21.8059,
+      "min_prediction": 196.28,
+      "max_prediction": 5197.96,
+      "mean_prediction": 2802.1190476190473,
+      "std_deviation": 1867.0161160523207,
+      "prediction_spread": 5001.68,
+      "relative_spread_percent": 178.49634205405775,
+      "correlation_vehicle_count_prediction": 0.522794963619639,
+      "analysis": {
+        "prediction_variability": "High",
+        "output_collapse_detected": false,
+        "correlation_strength": "Strong"
+      }
+    },
+    "2h": {
+      "model_mape": 27.035,
+      "min_prediction": 167.6,
+      "max_prediction": 1873.16,
+      "mean_prediction": 1328.827142857143,
+      "std_deviation": 587.0889405901505,
+      "prediction_spread": 1705.5600000000002,
+      "relative_spread_percent": 128.35077979614678,
+      "correlation_vehicle_count_prediction": 0.4005684627635025,
+      "analysis": {
+        "prediction_variability": "High",
+        "output_collapse_detected": false,
+        "correlation_strength": "Moderate"
+      }
+    },
+    "4h": {
+      "model_mape": 32.492,
+      "min_prediction": 251.98,
+      "max_prediction": 5121.82,
+      "mean_prediction": 3707.7042857142856,
+      "std_deviation": 1724.125206892915,
+      "prediction_spread": 4869.84,
+      "relative_spread_percent": 131.3438080475674,
+      "correlation_vehicle_count_prediction": 0.3518362474289412,
+      "analysis": {
+        "prediction_variability": "High",
+        "output_collapse_detected": false,
+        "correlation_strength": "Moderate"
+      }
+    }
+  },
+  "predictions": [
+    {
+      "camera_id": "CAM_002",
+      "source_video": "pagi_cctv_001_20260518_070935.mp4",
+      "date": "2026-05-18",
+      "time": "07:09:35",
+      "period": "Morning Rush",
+      "latitude": -6.2131428,
+      "longitude": 106.6837664,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.6,
+      "vehicle_count": 23,
+      "vehicle_count_1min": 72,
+      "volume_veh_per_hour": 4320,
+      "avg_speed_kmh": 53.62,
+      "density_percent": 19.8,
+      "queue_length_veh": 0,
+      "green_seconds": 44.2,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 4376.57,
+      "predicted_volume_2h": 1781.68,
+      "predicted_volume_4h": 4977.22,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Traffic is stable with low density (19.8%) and speed 53.6 km/h. Keep default green duration (44s). Peak-hour (Morning Rush) increases traffic demand.",
+      "recommendation": "Maintain normal operations with default green duration (44s).",
+      "confidence_range_15m": {
+        "lower_bound": 3422.2195223699996,
+        "upper_bound": 5330.920477629999
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1300.0028120000002,
+        "upper_bound": 2263.3571880000004
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3360.0216776,
+        "upper_bound": 6594.418322400001
+      }
+    },
+    {
+      "camera_id": "CAM_001",
+      "source_video": "pagi_cctv_002_20260518_070954.mp4",
+      "date": "2026-05-18",
+      "time": "07:09:54",
+      "period": "Morning Rush",
+      "latitude": -6.1911513,
+      "longitude": 106.7441887,
+      "weather": "Cloudy",
+      "weather_temp_c": 26.8,
+      "vehicle_count": 67,
+      "vehicle_count_1min": 71,
+      "volume_veh_per_hour": 4260,
+      "avg_speed_kmh": 40.17,
+      "density_percent": 51.03,
+      "queue_length_veh": 1,
+      "green_seconds": 57.8,
+      "congestion_level": "Medium",
+      "predicted_volume_15m": 4130.06,
+      "predicted_volume_2h": 1617.01,
+      "predicted_volume_4h": 4946.79,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Traffic is dense but still maintaining partial flow stability. Green duration set to 58s. Peak-hour (Morning Rush) increases traffic demand.",
+      "recommendation": "Monitor closely; adjust green duration to 58s if needed.",
+      "confidence_range_15m": {
+        "lower_bound": 3229.4632464600004,
+        "upper_bound": 5030.656753540001
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1179.8513465,
+        "upper_bound": 2054.1686535000003
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3339.4789932,
+        "upper_bound": 6554.1010068000005
+      }
+    },
+    {
+      "camera_id": "CAM_011",
+      "source_video": "pagi_cctv_004_20260518_071356.mp4",
+      "date": "2026-05-18",
+      "time": "07:13:56",
+      "period": "Morning Rush",
+      "latitude": -6.191635,
+      "longitude": 106.730124,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.6,
+      "vehicle_count": 63,
+      "vehicle_count_1min": 73,
+      "volume_veh_per_hour": 4380,
+      "avg_speed_kmh": 35.38,
+      "density_percent": 51.35,
+      "queue_length_veh": 1,
+      "green_seconds": 58.8,
+      "congestion_level": "Medium",
+      "predicted_volume_15m": 4147.99,
+      "predicted_volume_2h": 1651.49,
+      "predicted_volume_4h": 4895.23,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Traffic is dense but still maintaining partial flow stability. Green duration set to 59s. Peak-hour (Morning Rush) increases traffic demand.",
+      "recommendation": "Monitor closely; adjust green duration to 59s if needed.",
+      "confidence_range_15m": {
+        "lower_bound": 3243.4834485899996,
+        "upper_bound": 5052.4965514099995
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1205.0096785,
+        "upper_bound": 2097.9703215
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3304.6718683999998,
+        "upper_bound": 6485.7881316
+      }
+    },
+    {
+      "camera_id": "CAM_006",
+      "source_video": "pagi_cctv_006_20260518_071450.mp4",
+      "date": "2026-05-18",
+      "time": "07:14:50",
+      "period": "Morning Rush",
+      "latitude": -6.2265884,
+      "longitude": 106.6163871,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.2,
+      "vehicle_count": 93,
+      "vehicle_count_1min": 90,
+      "volume_veh_per_hour": 5400,
+      "avg_speed_kmh": 20.53,
+      "density_percent": 56.51,
+      "queue_length_veh": 28,
+      "green_seconds": 90.0,
+      "congestion_level": "Severe",
+      "predicted_volume_15m": 3376.79,
+      "predicted_volume_2h": 1667.16,
+      "predicted_volume_4h": 5121.82,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Severe congestion detected with 28 queued vehicles. Speed dropped to 20.5 km/h indicating traffic breakdown. Green duration extended to 90s to help dissipate the queue. Peak-hour (Morning Rush) increases traffic demand.",
+      "recommendation": "Activate emergency traffic control and extend green phase to 90s. Clear queue buildup immediately.",
+      "confidence_range_15m": {
+        "lower_bound": 2640.45054939,
+        "upper_bound": 4113.12945061
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1216.4432940000002,
+        "upper_bound": 2117.8767060000005
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3457.6382455999997,
+        "upper_bound": 6786.0017544
+      }
+    },
+    {
+      "camera_id": "CAM_004",
+      "source_video": "pagi_cctv_009_20260518_071625.mp4",
+      "date": "2026-05-18",
+      "time": "07:16:25",
+      "period": "Morning Rush",
+      "latitude": -6.2024517,
+      "longitude": 106.7052155,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.6,
+      "vehicle_count": 23,
+      "vehicle_count_1min": 99,
+      "volume_veh_per_hour": 5940,
+      "avg_speed_kmh": 52.23,
+      "density_percent": 20.01,
+      "queue_length_veh": 0,
+      "green_seconds": 44.6,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 5197.96,
+      "predicted_volume_2h": 1873.16,
+      "predicted_volume_4h": 5002.4,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Traffic is stable with low density (20.0%) and speed 52.2 km/h. Keep default green duration (45s). Peak-hour (Morning Rush) increases traffic demand.",
+      "recommendation": "Maintain normal operations with default green duration (45s).",
+      "confidence_range_15m": {
+        "lower_bound": 4064.4980403600002,
+        "upper_bound": 6331.42195964
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1366.7511940000002,
+        "upper_bound": 2379.568806
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3377.020192,
+        "upper_bound": 6627.779808
+      }
+    },
+    {
+      "camera_id": "CAM_007",
+      "source_video": "pagi_cctv_014_20260518_072255.mp4",
+      "date": "2026-05-18",
+      "time": "07:22:55",
+      "period": "Morning Rush",
+      "latitude": -6.2194495,
+      "longitude": 106.6572624,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.2,
+      "vehicle_count": 36,
+      "vehicle_count_1min": 131,
+      "volume_veh_per_hour": 7860,
+      "avg_speed_kmh": 28.49,
+      "density_percent": 31.96,
+      "queue_length_veh": 2,
+      "green_seconds": 55.9,
+      "congestion_level": "Medium",
+      "predicted_volume_15m": 5001.36,
+      "predicted_volume_2h": 1812.78,
+      "predicted_volume_4h": 4726.01,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Moderate congestion with 36 vehicles and speed 28.5 km/h. Green duration set to 56s. Peak-hour (Morning Rush) increases traffic demand.",
+      "recommendation": "Monitor closely; adjust green duration to 56s if needed. Consider pre-emptive signal adjustment.",
+      "confidence_range_15m": {
+        "lower_bound": 3910.7684397599996,
+        "upper_bound": 6091.95156024
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1322.694927,
+        "upper_bound": 2302.865073
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3190.4348308000003,
+        "upper_bound": 6261.585169200001
+      }
+    },
+    {
+      "camera_id": "CAM_008",
+      "source_video": "pagi_cctv_015_20260518_072703.mp4",
+      "date": "2026-05-18",
+      "time": "07:27:03",
+      "period": "Morning Rush",
+      "latitude": -6.223512,
+      "longitude": 106.623845,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.2,
+      "vehicle_count": 73,
+      "vehicle_count_1min": 32,
+      "volume_veh_per_hour": 1920,
+      "avg_speed_kmh": 23.29,
+      "density_percent": 56.44,
+      "queue_length_veh": 22,
+      "green_seconds": 90.0,
+      "congestion_level": "Severe",
+      "predicted_volume_15m": 2105.24,
+      "predicted_volume_2h": 929.81,
+      "predicted_volume_4h": 3288.53,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Severe congestion detected with 22 queued vehicles. Speed dropped to 23.3 km/h indicating traffic breakdown. Green duration extended to 90s to help dissipate the queue. Peak-hour (Morning Rush) increases traffic demand.",
+      "recommendation": "Activate emergency traffic control and extend green phase to 90s. Clear queue buildup immediately.",
+      "confidence_range_15m": {
+        "lower_bound": 1646.17347084,
+        "upper_bound": 2564.3065291599996
+      },
+      "confidence_range_2h": {
+        "lower_bound": 678.4358665,
+        "upper_bound": 1181.1841335
+      },
+      "confidence_range_4h": {
+        "lower_bound": 2220.0208324,
+        "upper_bound": 4357.039167600001
+      }
+    },
+    {
+      "camera_id": "CAM_010",
+      "source_video": "siang_cctv_001_20260518_163906.mp4",
+      "date": "2026-05-18",
+      "time": "16:39:06",
+      "period": "Evening Rush",
+      "latitude": -6.191542,
+      "longitude": 106.753315,
+      "weather": "Rain",
+      "weather_temp_c": 29.9,
+      "vehicle_count": 275,
+      "vehicle_count_1min": 92,
+      "volume_veh_per_hour": 5520,
+      "avg_speed_kmh": 54.74,
+      "density_percent": 51.31,
+      "queue_length_veh": 7,
+      "green_seconds": 63.9,
+      "congestion_level": "High",
+      "predicted_volume_15m": 4185.86,
+      "predicted_volume_2h": 1692.41,
+      "predicted_volume_4h": 4627.77,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "High traffic density with 7 queued vehicles and speed 54.7 km/h. Green duration adjusted to 64s. Peak-hour (Evening Rush) increases traffic demand. Rain may reduce road friction and visibility.",
+      "recommendation": "Increase signal optimization; set green duration to 64s. Focus on bottleneck queue reduction.",
+      "confidence_range_15m": {
+        "lower_bound": 3273.0955542599995,
+        "upper_bound": 5098.62444574
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1234.8669565,
+        "upper_bound": 2149.9530435
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3124.1149716000004,
+        "upper_bound": 6131.425028400001
+      }
+    },
+    {
+      "camera_id": "CAM_003",
+      "source_video": "siang_cctv_003_20260518_165921.mp4",
+      "date": "2026-05-18",
+      "time": "16:59:21",
+      "period": "Evening Rush",
+      "latitude": -6.2225065,
+      "longitude": 106.6394746,
+      "weather": "Clear",
+      "weather_temp_c": 29.7,
+      "vehicle_count": 19,
+      "vehicle_count_1min": 7,
+      "volume_veh_per_hour": 420,
+      "avg_speed_kmh": 6.61,
+      "density_percent": 26.47,
+      "queue_length_veh": 10,
+      "green_seconds": 70.6,
+      "congestion_level": "Severe",
+      "predicted_volume_15m": 884.73,
+      "predicted_volume_2h": 1514.26,
+      "predicted_volume_4h": 3676.58,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Severe congestion detected with 10 queued vehicles. Speed dropped to 6.6 km/h indicating traffic breakdown. Green duration extended to 71s to help dissipate the queue. Peak-hour (Evening Rush) increases traffic demand.",
+      "recommendation": "Activate emergency traffic control and extend green phase to 71s. Clear queue buildup immediately.",
+      "confidence_range_15m": {
+        "lower_bound": 691.80666093,
+        "upper_bound": 1077.6533390700001
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1104.879809,
+        "upper_bound": 1923.6401910000002
+      },
+      "confidence_range_4h": {
+        "lower_bound": 2481.9856264,
+        "upper_bound": 4871.1743736
+      }
+    },
+    {
+      "camera_id": "CAM_005",
+      "source_video": "siang_cctv_004_20260518_170659.mp4",
+      "date": "2026-05-18",
+      "time": "17:06:59",
+      "period": "Evening Rush",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Clear",
+      "weather_temp_c": 29.9,
+      "vehicle_count": 256,
+      "vehicle_count_1min": 248,
+      "volume_veh_per_hour": 14880,
+      "avg_speed_kmh": 29.31,
+      "density_percent": 52.24,
+      "queue_length_veh": 1,
+      "green_seconds": 60.3,
+      "congestion_level": "High",
+      "predicted_volume_15m": 4917.87,
+      "predicted_volume_2h": 1743.57,
+      "predicted_volume_4h": 4269.42,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "High traffic density with 1 queued vehicles and speed 29.3 km/h. Green duration adjusted to 60s. Peak-hour (Evening Rush) increases traffic demand.",
+      "recommendation": "Increase signal optimization; set green duration to 60s.",
+      "confidence_range_15m": {
+        "lower_bound": 3845.48418567,
+        "upper_bound": 5990.25581433
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1272.1958505,
+        "upper_bound": 2214.9441495
+      },
+      "confidence_range_4h": {
+        "lower_bound": 2882.2000536,
+        "upper_bound": 5656.639946400001
+      }
+    },
+    {
+      "camera_id": "CAM_011",
+      "source_video": "siang_cctv_005_20260518_171425.mp4",
+      "date": "2026-05-18",
+      "time": "17:14:25",
+      "period": "Evening Rush",
+      "latitude": -6.191635,
+      "longitude": 106.730124,
+      "weather": "Clear",
+      "weather_temp_c": 29.9,
+      "vehicle_count": 362,
+      "vehicle_count_1min": 139,
+      "volume_veh_per_hour": 8340,
+      "avg_speed_kmh": 22.84,
+      "density_percent": 57.54,
+      "queue_length_veh": 109,
+      "green_seconds": 90.0,
+      "congestion_level": "Severe",
+      "predicted_volume_15m": 4168.78,
+      "predicted_volume_2h": 1664.49,
+      "predicted_volume_4h": 4648.57,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Severe congestion detected with 109 queued vehicles. Speed dropped to 22.8 km/h indicating traffic breakdown. Green duration extended to 90s to help dissipate the queue. Peak-hour (Evening Rush) increases traffic demand.",
+      "recommendation": "Activate emergency traffic control and extend green phase to 90s. Clear queue buildup immediately.",
+      "confidence_range_15m": {
+        "lower_bound": 3259.7400019799998,
+        "upper_bound": 5077.81999802
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1214.4951285,
+        "upper_bound": 2114.4848715000003
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3138.1566356,
+        "upper_bound": 6158.9833644
+      }
+    },
+    {
+      "camera_id": "CAM_011",
+      "source_video": "siang_cctv_007_20260518_160452.mp4",
+      "date": "2026-05-18",
+      "time": "16:04:52",
+      "period": "Evening Rush",
+      "latitude": -6.191635,
+      "longitude": 106.730124,
+      "weather": "Cloudy",
+      "weather_temp_c": 30.5,
+      "vehicle_count": 352,
+      "vehicle_count_1min": 117,
+      "volume_veh_per_hour": 7020,
+      "avg_speed_kmh": 57.98,
+      "density_percent": 50.8,
+      "queue_length_veh": 2,
+      "green_seconds": 55.6,
+      "congestion_level": "Medium",
+      "predicted_volume_15m": 4720.17,
+      "predicted_volume_2h": 1740.61,
+      "predicted_volume_4h": 4607.45,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Moderate congestion with 352 vehicles and speed 58.0 km/h. Green duration set to 56s. Peak-hour (Evening Rush) increases traffic demand.",
+      "recommendation": "Monitor closely; adjust green duration to 56s if needed.",
+      "confidence_range_15m": {
+        "lower_bound": 3690.89444997,
+        "upper_bound": 5749.44555003
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1270.0360865,
+        "upper_bound": 2211.1839135
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3110.3973459999997,
+        "upper_bound": 6104.502654
+      }
+    },
+    {
+      "camera_id": "CAM_011",
+      "source_video": "siang_cctv_008_20260518_151934.mp4",
+      "date": "2026-05-18",
+      "time": "15:19:34",
+      "period": "Daytime",
+      "latitude": -6.191635,
+      "longitude": 106.730124,
+      "weather": "Rain",
+      "weather_temp_c": 31.3,
+      "vehicle_count": 16,
+      "vehicle_count_1min": 129,
+      "volume_veh_per_hour": 7740,
+      "avg_speed_kmh": 71.71,
+      "density_percent": 14.1,
+      "queue_length_veh": 0,
+      "green_seconds": 38.9,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 4744.74,
+      "predicted_volume_2h": 1489.28,
+      "predicted_volume_4h": 4691.98,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Traffic is stable with low density (14.1%) and speed 71.7 km/h. Keep default green duration (39s). Rain may reduce road friction and visibility.",
+      "recommendation": "Maintain normal operations with default green duration (39s).",
+      "confidence_range_15m": {
+        "lower_bound": 3710.1067403399998,
+        "upper_bound": 5779.373259659999
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1086.653152,
+        "upper_bound": 1891.906848
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3167.4618584,
+        "upper_bound": 6216.4981416
+      }
+    },
+    {
+      "camera_id": "CAM_001",
+      "source_video": "malam_cctv_001_20260518_003725.mp4",
+      "date": "2026-05-18",
+      "time": "00:37:25",
+      "period": "Late Night",
+      "latitude": -6.1911513,
+      "longitude": 106.7441887,
+      "weather": "Cloudy",
+      "weather_temp_c": 26.5,
+      "vehicle_count": 3,
+      "vehicle_count_1min": 2,
+      "volume_veh_per_hour": 120,
+      "avg_speed_kmh": 9.22,
+      "density_percent": 9.17,
+      "queue_length_veh": 1,
+      "green_seconds": 51.4,
+      "congestion_level": "Severe",
+      "predicted_volume_15m": 986.14,
+      "predicted_volume_2h": 1621.05,
+      "predicted_volume_4h": 4299.97,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Severe congestion detected with 1 queued vehicles. Speed dropped to 9.2 km/h indicating traffic breakdown. Green duration extended to 51s to help dissipate the queue.",
+      "recommendation": "Activate emergency traffic control and extend green phase to 51s.",
+      "confidence_range_15m": {
+        "lower_bound": 771.10329774,
+        "upper_bound": 1201.17670226
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1182.7991325,
+        "upper_bound": 2059.3008675
+      },
+      "confidence_range_4h": {
+        "lower_bound": 2902.8237476000004,
+        "upper_bound": 5697.116252400001
+      }
+    },
+    {
+      "camera_id": "CAM_004",
+      "source_video": "malam_cctv_003_20260518_004022.mp4",
+      "date": "2026-05-18",
+      "time": "00:40:22",
+      "period": "Late Night",
+      "latitude": -6.2024517,
+      "longitude": 106.7052155,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.9,
+      "vehicle_count": 0,
+      "vehicle_count_1min": 0,
+      "volume_veh_per_hour": 0,
+      "avg_speed_kmh": 80.0,
+      "density_percent": 0.0,
+      "queue_length_veh": 0,
+      "green_seconds": 33.0,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 200.37,
+      "predicted_volume_2h": 185.15,
+      "predicted_volume_4h": 272.97,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Traffic is stable with low density (0.0%) and speed 80.0 km/h. Keep default green duration (33s).",
+      "recommendation": "Maintain normal operations with default green duration (33s).",
+      "confidence_range_15m": {
+        "lower_bound": 156.67751817,
+        "upper_bound": 244.06248183
+      },
+      "confidence_range_2h": {
+        "lower_bound": 135.0946975,
+        "upper_bound": 235.20530250000002
+      },
+      "confidence_range_4h": {
+        "lower_bound": 184.27658760000003,
+        "upper_bound": 361.6634124000001
+      }
+    },
+    {
+      "camera_id": "CAM_005",
+      "source_video": "malam_cctv_005_20260518_004357.mp4",
+      "date": "2026-05-18",
+      "time": "00:43:57",
+      "period": "Late Night",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.9,
+      "vehicle_count": 33,
+      "vehicle_count_1min": 56,
+      "volume_veh_per_hour": 3360,
+      "avg_speed_kmh": 20.29,
+      "density_percent": 34.58,
+      "queue_length_veh": 10,
+      "green_seconds": 70.3,
+      "congestion_level": "High",
+      "predicted_volume_15m": 2904.52,
+      "predicted_volume_2h": 1508.35,
+      "predicted_volume_4h": 4834.5,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "High traffic density with 10 queued vehicles and speed 20.3 km/h. Green duration adjusted to 70s.",
+      "recommendation": "Increase signal optimization; set green duration to 70s. Focus on bottleneck queue reduction.",
+      "confidence_range_15m": {
+        "lower_bound": 2271.16327332,
+        "upper_bound": 3537.87672668
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1100.5675775,
+        "upper_bound": 1916.1324225
+      },
+      "confidence_range_4h": {
+        "lower_bound": 3263.6742600000002,
+        "upper_bound": 6405.32574
+      }
+    },
+    {
+      "camera_id": "CAM_007",
+      "source_video": "malam_cctv_007_20260518_033146.mp4",
+      "date": "2026-05-18",
+      "time": "03:31:46",
+      "period": "Late Night",
+      "latitude": -6.2194495,
+      "longitude": 106.6572624,
+      "weather": "Cloudy",
+      "weather_temp_c": 24.5,
+      "vehicle_count": 13,
+      "vehicle_count_1min": 16,
+      "volume_veh_per_hour": 960,
+      "avg_speed_kmh": 17.48,
+      "density_percent": 14.11,
+      "queue_length_veh": 2,
+      "green_seconds": 52.7,
+      "congestion_level": "Medium",
+      "predicted_volume_15m": 1385.36,
+      "predicted_volume_2h": 1446.43,
+      "predicted_volume_4h": 4268.57,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Moderate congestion with 13 vehicles and speed 17.5 km/h. Green duration set to 53s.",
+      "recommendation": "Monitor closely; adjust green duration to 53s if needed. Consider pre-emptive signal adjustment.",
+      "confidence_range_15m": {
+        "lower_bound": 1083.2697837599999,
+        "upper_bound": 1687.45021624
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1055.3876495000002,
+        "upper_bound": 1837.4723505000002
+      },
+      "confidence_range_4h": {
+        "lower_bound": 2881.6262355999997,
+        "upper_bound": 5655.5137644
+      }
+    },
+    {
+      "camera_id": "CAM_011",
+      "source_video": "malam_cctv_008_20260518_004504.mp4",
+      "date": "2026-05-18",
+      "time": "00:45:04",
+      "period": "Late Night",
+      "latitude": -6.191635,
+      "longitude": 106.730124,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.9,
+      "vehicle_count": 0,
+      "vehicle_count_1min": 0,
+      "volume_veh_per_hour": 0,
+      "avg_speed_kmh": 80.0,
+      "density_percent": 0.0,
+      "queue_length_veh": 0,
+      "green_seconds": 33.0,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 197.45,
+      "predicted_volume_2h": 189.95,
+      "predicted_volume_4h": 284.42,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Traffic is stable with low density (0.0%) and speed 80.0 km/h. Keep default green duration (33s).",
+      "recommendation": "Maintain normal operations with default green duration (33s).",
+      "confidence_range_15m": {
+        "lower_bound": 154.39425045,
+        "upper_bound": 240.50574955
+      },
+      "confidence_range_2h": {
+        "lower_bound": 138.5970175,
+        "upper_bound": 241.3029825
+      },
+      "confidence_range_4h": {
+        "lower_bound": 192.0062536,
+        "upper_bound": 376.83374640000005
+      }
+    },
+    {
+      "camera_id": "CAM_003",
+      "source_video": "malam_cctv_009_20260518_004524.mp4",
+      "date": "2026-05-18",
+      "time": "00:45:24",
+      "period": "Late Night",
+      "latitude": -6.2225065,
+      "longitude": 106.6394746,
+      "weather": "Cloudy",
+      "weather_temp_c": 25.5,
+      "vehicle_count": 0,
+      "vehicle_count_1min": 0,
+      "volume_veh_per_hour": 0,
+      "avg_speed_kmh": 80.0,
+      "density_percent": 0.0,
+      "queue_length_veh": 0,
+      "green_seconds": 33.0,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 196.28,
+      "predicted_volume_2h": 187.92,
+      "predicted_volume_4h": 283.22,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Traffic is stable with low density (0.0%) and speed 80.0 km/h. Keep default green duration (33s).",
+      "recommendation": "Maintain normal operations with default green duration (33s).",
+      "confidence_range_15m": {
+        "lower_bound": 153.47937948,
+        "upper_bound": 239.08062052
+      },
+      "confidence_range_2h": {
+        "lower_bound": 137.115828,
+        "upper_bound": 238.724172
+      },
+      "confidence_range_4h": {
+        "lower_bound": 191.19615760000002,
+        "upper_bound": 375.24384240000006
+      }
+    },
+    {
+      "camera_id": "CAM_011",
+      "source_video": "malam_cctv_014_20260518_033116.mp4",
+      "date": "2026-05-18",
+      "time": "03:31:16",
+      "period": "Late Night",
+      "latitude": -6.191635,
+      "longitude": 106.730124,
+      "weather": "Cloudy",
+      "weather_temp_c": 24.9,
+      "vehicle_count": 0,
+      "vehicle_count_1min": 0,
+      "volume_veh_per_hour": 0,
+      "avg_speed_kmh": 80.0,
+      "density_percent": 0.0,
+      "queue_length_veh": 0,
+      "green_seconds": 33.0,
+      "congestion_level": "Low",
+      "predicted_volume_15m": 206.12,
+      "predicted_volume_2h": 167.6,
+      "predicted_volume_4h": 251.98,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Traffic is stable with low density (0.0%) and speed 80.0 km/h. Keep default green duration (33s).",
+      "recommendation": "Maintain normal operations with default green duration (33s).",
+      "confidence_range_15m": {
+        "lower_bound": 161.17367892000001,
+        "upper_bound": 251.06632108
+      },
+      "confidence_range_2h": {
+        "lower_bound": 122.28934,
+        "upper_bound": 212.91066
+      },
+      "confidence_range_4h": {
+        "lower_bound": 170.1066584,
+        "upper_bound": 333.8533416
+      }
+    },
+    {
+      "camera_id": "CAM_005",
+      "source_video": "malam_cctv_016_20260518_033544.mp4",
+      "date": "2026-05-18",
+      "time": "03:35:44",
+      "period": "Late Night",
+      "latitude": -6.2142883,
+      "longitude": 106.6820298,
+      "weather": "Cloudy",
+      "weather_temp_c": 24.9,
+      "vehicle_count": 21,
+      "vehicle_count_1min": 7,
+      "volume_veh_per_hour": 420,
+      "avg_speed_kmh": 9.72,
+      "density_percent": 27.46,
+      "queue_length_veh": 10,
+      "green_seconds": 70.3,
+      "congestion_level": "Severe",
+      "predicted_volume_15m": 810.14,
+      "predicted_volume_2h": 1421.21,
+      "predicted_volume_4h": 3886.39,
+      "model_mape_15m": 21.8059,
+      "model_mape_2h": 27.035,
+      "model_mape_4h": 32.492,
+      "ai_insight": "Severe congestion detected with 10 queued vehicles. Speed dropped to 9.7 km/h indicating traffic breakdown. Green duration extended to 70s to help dissipate the queue.",
+      "recommendation": "Activate emergency traffic control and extend green phase to 70s. Clear queue buildup immediately.",
+      "confidence_range_15m": {
+        "lower_bound": 633.48168174,
+        "upper_bound": 986.79831826
+      },
+      "confidence_range_2h": {
+        "lower_bound": 1036.9858765000001,
+        "upper_bound": 1805.4341235000002
+      },
+      "confidence_range_4h": {
+        "lower_bound": 2623.6241612,
+        "upper_bound": 5149.1558388
+      }
+    }
+  ]
+}
