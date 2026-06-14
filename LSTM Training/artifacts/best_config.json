@@ -1,13 +1,13 @@
 {
   "horizon": "15m",
-  "seq_len": 60,
-  "target_scaler": "robust",
+  "seq_len": 15,
+  "target_scaler": "standard",
   "feature_scaler": "standard",
-  "learning_rate": 0.0005,
+  "learning_rate": 0.001,
   "batch_size": 32,
   "dropout": 0.1,
-  "loss": "mape_safe",
+  "loss": "mae",
   "arch": "lstm_light",
-  "val_mape_15m": 19.9826,
-  "test_mape_15m": 20.6046
+  "val_mape_15m": 20.2932,
+  "test_mape_15m": 21.8059
 }
