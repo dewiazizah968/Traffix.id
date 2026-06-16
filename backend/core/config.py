@@ -199,6 +199,10 @@ class Settings(BaseSettings):
         default="../inference/inference_lstm/traffix_lstm_inference_outputs/lstm_prediction_output.json",
         description="Path to the latest LSTM video prediction JSON output",
     )
+    yolo_vehicle_count_path: str = Field(
+        default="../inference/inference_yolo/vehicle_count.csv",
+        description="Path to the latest YOLO vehicle count CSV output",
+    )
 
     # Simulation
     simulation_auto_start: bool = Field(

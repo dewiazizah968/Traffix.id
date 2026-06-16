@@ -7,6 +7,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 
 from app.runtime_status import runtime_status
+from app.services.camera_service import camera_service
 from core.config import settings
 from core.constants import HORIZONS
 from core.responses import success_response
@@ -111,6 +112,7 @@ async def v1_status(request: Request) -> JSONResponse:
         Standardized response with placeholder readiness flags.
     """
     snapshot = runtime_status.snapshot()
+    camera_status = camera_service.status()
     return success_response(
         message="System status retrieved",
         data={
@@ -124,7 +126,17 @@ async def v1_status(request: Request) -> JSONResponse:
             "simulation_ready": snapshot["simulation_ready"],
             "simulation_active": tick_engine.is_running(),
             "dataset_ready": snapshot["dataset_ready"],
-            "camera_ready": settings.camera_input_enabled,
+            "camera_ready": camera_status["frontend_ready"],
+            "camera_status": {
+                "configured_cameras": camera_status["configured_cameras"],
+                "api_ready_cameras": camera_status["api_ready_cameras"],
+                "metadata_loaded": camera_status["metadata_loaded"],
+                "prediction_output_loaded": camera_status["prediction_output_loaded"],
+                "yolo_output_loaded": camera_status["yolo_output_loaded"],
+                "videos_available": camera_status["videos_available"],
+                "videos_missing": camera_status["videos_missing"],
+                "warnings": camera_status["warnings"],
+            },
             "supported_horizons": HORIZONS,
         },
         request_id=request.state.request_id,

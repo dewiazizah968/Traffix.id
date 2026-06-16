@@ -10,10 +10,10 @@ WeatherCondition: TypeAlias = Literal["Sunny", "Cloudy", "Rain", "Storm"]
 StateValue: TypeAlias = str | int | float
 
 DEFAULT_INTERSECTIONS: Final[tuple[tuple[str, str], ...]] = (
-    ("INT-001", "Jl. Diponegoro"),
-    ("INT-002", "Jl. Ahmad Yani"),
-    ("INT-003", "Jl. Basuki Rahmat"),
-    ("INT-004", "Jl. Gubeng"),
+    ("INT-001", "GT MERUYA 2B"),
+    ("INT-002", "KM 00+600"),
+    ("INT-003", "KM 04+600"),
+    ("INT-004", "KM 07+200"),
 )
 
 UPDATABLE_FIELDS: Final[frozenset[str]] = frozenset(
