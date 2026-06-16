@@ -3,6 +3,7 @@
 from fastapi import APIRouter, HTTPException, Request
 
 from app.runtime_status import runtime_status
+from app.services.inference_insight_service import inference_insight_service
 from app.state_store import state_store
 from core.constants import HORIZONS
 from core.responses import success_response
@@ -71,6 +72,7 @@ async def list_predictions(
         )
         for horizon in HORIZONS
     ]
+    insight = inference_insight_service.get_insight(normalized_id)
 
     return success_response(
         message="Predictions generated",
@@ -80,6 +82,13 @@ async def list_predictions(
             "ml_fallback_active": ml_fallback_active(),
             "ml_mode": runtime_status.snapshot()["ml_mode"],
             "predictions": predictions,
+            "ai_insight": insight.get("ai_insight") if insight else None,
+            "recommendation": insight.get("recommendation") if insight else None,
+            "recommended_green_seconds": (
+                insight.get("recommended_green_seconds") if insight else None
+            ),
+            "congestion_level": insight.get("congestion_level") if insight else None,
+            "inference_source": insight.get("source") if insight else None,
         },
         request_id=request.state.request_id,
     )

@@ -3,10 +3,12 @@
 from dataclasses import dataclass
 from typing import Literal
 
+from app.services.inference_insight_service import inference_insight_service
 from app.state_store import LiveIntersectionState, state_store
 from core.constants import HORIZONS
 
 RecommendationPriority = Literal["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+RecommendationSource = Literal["lstm-inference", "rule-based"]
 
 
 @dataclass(frozen=True)
@@ -20,6 +22,11 @@ class SignalRecommendation:
     reason: str
     congestion_risk_percent: float
     priority: RecommendationPriority
+    ai_insight: str | None = None
+    recommendation: str | None = None
+    congestion_level: str | None = None
+    source: RecommendationSource = "rule-based"
+    display_recommendation: bool = True
 
 
 class RecommendationService:
@@ -71,7 +78,34 @@ class RecommendationService:
             Recommendation object.
         """
         risk = self._risk_percent(state)
+        insight = inference_insight_service.get_insight(state["intersection_id"])
         current_green = int(state["green_duration_seconds"])
+        if insight is not None and insight.get("recommended_green_seconds") is not None:
+            recommended_green = int(round(float(insight["recommended_green_seconds"])))
+            reason = str(
+                insight.get("recommendation")
+                or insight.get("ai_insight")
+                or "LSTM inference recommendation available.",
+            )
+            priority = self._priority_from_congestion(
+                insight.get("congestion_level"),
+                risk,
+            )
+            return SignalRecommendation(
+                intersection_id=state["intersection_id"],
+                current_green_seconds=current_green,
+                recommended_green_seconds=recommended_green,
+                delta_seconds=recommended_green - current_green,
+                reason=reason,
+                congestion_risk_percent=round(risk, 2),
+                priority=priority,
+                ai_insight=insight.get("ai_insight"),
+                recommendation=insight.get("recommendation"),
+                congestion_level=insight.get("congestion_level"),
+                source="lstm-inference",
+                display_recommendation=bool(insight.get("display_recommendation")),
+            )
+
         recommended_green = self._recommended_green_seconds(risk, state)
         reason = self._reason(risk, state)
         return SignalRecommendation(
@@ -82,6 +116,7 @@ class RecommendationService:
             reason=reason,
             congestion_risk_percent=round(risk, 2),
             priority=self._priority(risk),
+            display_recommendation=risk >= 50.0,
         )
 
     def _risk_percent(self, state: LiveIntersectionState) -> float:
@@ -171,6 +206,23 @@ class RecommendationService:
         if risk >= 50.0:
             return "MEDIUM"
         return "LOW"
+
+    def _priority_from_congestion(
+        self,
+        congestion_level: str | None,
+        risk: float,
+    ) -> RecommendationPriority:
+        """Prefer LSTM congestion labels when mapping dashboard priority."""
+        normalized = (congestion_level or "").strip().casefold()
+        if normalized == "severe":
+            return "CRITICAL"
+        if normalized == "high":
+            return "HIGH"
+        if normalized == "medium":
+            return "MEDIUM"
+        if normalized == "low":
+            return "LOW"
+        return self._priority(risk)
 
 
 recommendation_service = RecommendationService()
