@@ -2,7 +2,7 @@
 
 from typing import Final
 
-# Data team synthetic IDs mapped to Surabaya demo intersections.
+# Data team synthetic IDs mapped to Jakarta-Tangerang dashboard intersections.
 DATASET_TO_STORE: Final[dict[str, str]] = {
     "JKT-TMG-SIM-01": "INT-001",
     "1": "INT-001",
@@ -11,7 +11,7 @@ DATASET_TO_STORE: Final[dict[str, str]] = {
     "4": "INT-004",
 }
 
-# When the CSV only contains one physical intersection, fan out to all demo IDs.
+# When the CSV only contains one physical intersection, fan out to dashboard IDs.
 DEMO_INTERSECTION_SCALE: Final[dict[str, float]] = {
     "INT-001": 1.0,
     "INT-002": 0.88,

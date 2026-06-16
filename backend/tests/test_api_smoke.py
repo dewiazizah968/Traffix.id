@@ -28,6 +28,7 @@ def test_live_intersections_endpoint(api_client):
     assert data["count"] == 4
     first = data["intersections"][0]
     assert first["intersection_id"].startswith("INT-")
+    assert first["intersection_name"] == "GT MERUYA 2B"
     assert "ai_predictions" in first
 
 
