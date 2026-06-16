@@ -31,29 +31,77 @@ class CameraService:
         predictions_available = sum(
             1 for camera in cameras if camera.get("prediction_source")
         )
+        metadata_loaded = self.metadata_path.exists()
+        yolo_output_loaded = self.yolo_vehicle_count_path.exists()
+        frontend_ready = metadata_loaded and (
+            predictions_available > 0 or yolo_output_loaded
+        )
+        warnings: list[str] = []
+        if not metadata_loaded:
+            warnings.append("CCTV metadata CSV is missing")
+        if predictions_available == 0:
+            warnings.append("LSTM prediction output is missing or not matched to cameras")
+        if videos_available == 0 and cameras:
+            warnings.append(
+                "Camera MP4 files are not present in backend video storage; "
+                "use video_library_url or frontend placeholders",
+            )
+
         return {
             "camera_input_enabled": settings.camera_input_enabled,
             "max_cameras": settings.max_cameras,
             "configured_cameras": len(cameras),
             "active_cameras": sum(1 for camera in cameras if camera["status"] == "active"),
+            "api_ready_cameras": len(cameras) if frontend_ready else 0,
             "videos_available": videos_available,
             "videos_missing": len(cameras) - videos_available,
             "predictions_available": predictions_available,
-            "metadata_loaded": self.metadata_path.exists(),
+            "metadata_loaded": metadata_loaded,
             "prediction_output_loaded": self.prediction_output_available,
             "prediction_output_source": self.prediction_output_source,
+            "yolo_output_loaded": yolo_output_loaded,
+            "yolo_output_source": "csv" if yolo_output_loaded else None,
             "video_library_url": settings.camera_video_library_url,
-            "yolo_ready": self.metadata_path.exists(),
+            "video_storage_path": str(self.video_root_path),
+            "frontend_ready": frontend_ready,
+            "warnings": warnings,
+            "data_sources": {
+                "metadata": {
+                    "loaded": metadata_loaded,
+                    "path": str(self.metadata_path),
+                },
+                "lstm_predictions": {
+                    "loaded": self.prediction_output_available,
+                    "source": self.prediction_output_source,
+                    "path": str(
+                        self.prediction_output_json_path
+                        if self.prediction_output_json_path.exists()
+                        else self.prediction_output_path
+                    ),
+                },
+                "yolo_vehicle_counts": {
+                    "loaded": yolo_output_loaded,
+                    "source": "csv" if yolo_output_loaded else None,
+                    "path": str(self.yolo_vehicle_count_path),
+                },
+                "videos": {
+                    "available": videos_available,
+                    "missing": len(cameras) - videos_available,
+                    "storage_path": str(self.video_root_path),
+                    "library_url": settings.camera_video_library_url,
+                },
+            },
+            "yolo_ready": metadata_loaded and yolo_output_loaded,
             "model_loaded": False,
             "mode": (
                 "metadata"
-                if self.metadata_path.exists()
+                if metadata_loaded
                 else "standby" if not settings.camera_input_enabled else "configured"
             ),
             "updated_at": datetime.now(timezone.utc).isoformat(),
             "message": (
-                "Validated CCTV metadata is loaded; video URLs are exposed from the backend API."
-                if self.metadata_path.exists()
+                "Validated CCTV metadata, LSTM predictions, and YOLO counts are ready for the frontend."
+                if frontend_ready
                 else (
                     "Camera input is disabled; YOLO pipeline can be attached via future stream adapters."
                     if not settings.camera_input_enabled
@@ -81,6 +129,11 @@ class CameraService:
     def prediction_output_json_path(self) -> Path:
         """Return the resolved LSTM video prediction output JSON path."""
         return resolve_asset_path(settings.prediction_output_json_path)
+
+    @property
+    def yolo_vehicle_count_path(self) -> Path:
+        """Return the resolved YOLO vehicle count CSV path."""
+        return resolve_asset_path(settings.yolo_vehicle_count_path)
 
     @property
     def prediction_output_available(self) -> bool:
@@ -142,6 +195,7 @@ class CameraService:
             return []
 
         predictions_by_video = self._load_prediction_outputs()
+        yolo_by_video = self._load_yolo_outputs()
         latest_by_camera: dict[str, dict[str, str]] = {}
         with path.open(newline="", encoding="utf-8-sig") as csv_file:
             for row in csv.DictReader(csv_file):
@@ -155,13 +209,18 @@ class CameraService:
                     if current is not None
                     else ""
                 )
-                row_has_prediction = video_file in predictions_by_video
-                current_has_prediction = current_video in predictions_by_video
+                row_has_data = (
+                    video_file in predictions_by_video or video_file in yolo_by_video
+                )
+                current_has_data = (
+                    current_video in predictions_by_video
+                    or current_video in yolo_by_video
+                )
                 if (
                     current is None
-                    or (row_has_prediction and not current_has_prediction)
+                    or (row_has_data and not current_has_data)
                     or (
-                        row_has_prediction == current_has_prediction
+                        row_has_data == current_has_data
                         and row.get("timestamp_wib", "") > current.get("timestamp_wib", "")
                     )
                 ):
@@ -172,7 +231,8 @@ class CameraService:
             if len(cameras) >= settings.max_cameras:
                 break
             prediction_row = predictions_by_video.get((row.get("video_file") or "").strip())
-            cameras.append(self._camera_from_metadata(row, prediction_row))
+            yolo_row = yolo_by_video.get((row.get("video_file") or "").strip())
+            cameras.append(self._camera_from_metadata(row, prediction_row, yolo_row))
         return cameras
 
     def _load_prediction_outputs(self) -> dict[str, PredictionRow]:
@@ -217,10 +277,25 @@ class CameraService:
                     predictions[source_video] = row
         return predictions
 
+    def _load_yolo_outputs(self) -> dict[str, PredictionRow]:
+        """Load YOLO vehicle-count rows keyed by source video filename."""
+        path = self.yolo_vehicle_count_path
+        if not path.exists():
+            return {}
+
+        detections: dict[str, PredictionRow] = {}
+        with path.open(newline="", encoding="utf-8-sig") as csv_file:
+            for row in csv.DictReader(csv_file):
+                source_video = (row.get("source_video") or "").strip()
+                if source_video:
+                    detections[source_video] = row
+        return detections
+
     def _camera_from_metadata(
         self,
         row: dict[str, str],
         prediction_row: PredictionRow | None,
+        yolo_row: PredictionRow | None,
     ) -> dict[str, object]:
         """Convert one metadata row into the frontend camera payload."""
         camera_id = (row.get("camera_id") or row.get("cctv_id") or "").strip()
@@ -239,6 +314,25 @@ class CameraService:
             else False
         )
         video_url = expected_video_url if video_exists else None
+        detected_vehicle_count = self._optional_int(
+            self._prediction_value(prediction_row, "vehicle_count"),
+        )
+        if detected_vehicle_count is None:
+            detected_vehicle_count = self._optional_int(
+                self._prediction_value(yolo_row, "vehicle_count"),
+            )
+
+        data_sources = ["validated-cctv-metadata"]
+        if prediction_row is not None:
+            data_sources.append(
+                "lstm-output-json"
+                if self.prediction_output_json_path.exists()
+                else "lstm-output-csv",
+            )
+        if yolo_row is not None:
+            data_sources.append("yolo-vehicle-count-csv")
+        if video_exists:
+            data_sources.append("backend-video-storage")
 
         payload: dict[str, object] = {
             "camera_id": camera_id,
@@ -262,13 +356,16 @@ class CameraService:
             "latitude": self._optional_float(row.get("lat")),
             "longitude": self._optional_float(row.get("lon")),
             "last_frame_at": row.get("timestamp_wib") or None,
-            "detected_vehicle_count": self._optional_int(
-                self._prediction_value(prediction_row, "vehicle_count"),
-            ),
-            "source": "validated-cctv-metadata",
+            "detected_vehicle_count": detected_vehicle_count,
+            "data_sources": data_sources,
+            "source": "+".join(data_sources),
         }
         if prediction_row is not None:
             payload.update(self._prediction_payload(prediction_row))
+        if yolo_row is not None:
+            payload["yolo"] = self._yolo_payload(yolo_row)
+            if "traffic" not in payload:
+                payload["traffic"] = self._traffic_payload(yolo_row)
         return payload
 
     def _video_url(self, period: str, video_file: str) -> str | None:
@@ -277,7 +374,7 @@ class CameraService:
             return None
         return f"{VIDEO_ROUTE_PREFIX}/{quote(period)}/{quote(video_file)}"
 
-    def _optional_float(self, value: str | None) -> float | None:
+    def _optional_float(self, value: Any) -> float | None:
         """Parse optional float metadata values."""
         if value is None or value == "":
             return None
@@ -286,7 +383,7 @@ class CameraService:
         except ValueError:
             return None
 
-    def _optional_int(self, value: str | None) -> int | None:
+    def _optional_int(self, value: Any) -> int | None:
         """Parse optional integer metadata values."""
         parsed = self._optional_float(value)
         if parsed is None:
@@ -309,21 +406,7 @@ class CameraService:
             "prediction_source": "lstm-output-json"
             if self.prediction_output_json_path.exists()
             else "lstm-output-csv",
-            "traffic": {
-                "vehicle_count": self._optional_int(row.get("vehicle_count")),
-                "vehicle_count_1min": self._optional_int(
-                    row.get("vehicle_count_1min"),
-                ),
-                "volume_veh_per_hour": self._optional_float(
-                    row.get("volume_veh_per_hour"),
-                ),
-                "avg_speed_kmh": self._optional_float(row.get("avg_speed_kmh")),
-                "density_percent": self._optional_float(row.get("density_percent")),
-                "queue_length_veh": self._optional_int(row.get("queue_length_veh")),
-                "congestion_level": row.get("congestion_level") or None,
-                "weather": row.get("weather") or None,
-                "weather_temp_c": self._optional_float(row.get("weather_temp_c")),
-            },
+            "traffic": self._traffic_payload(row),
             "predictions": {
                 "15m": self._optional_float(row.get("predicted_volume_15m")),
                 "2h": self._optional_float(row.get("predicted_volume_2h")),
@@ -336,6 +419,30 @@ class CameraService:
             },
             "ai_insight": row.get("ai_insight") or None,
             "recommendation": row.get("recommendation") or None,
+        }
+
+    def _traffic_payload(self, row: PredictionRow) -> dict[str, object]:
+        """Build traffic fields shared by LSTM and YOLO outputs."""
+        return {
+            "vehicle_count": self._optional_int(row.get("vehicle_count")),
+            "vehicle_count_1min": self._optional_int(row.get("vehicle_count_1min")),
+            "volume_veh_per_hour": self._optional_float(row.get("volume_veh_per_hour")),
+            "avg_speed_kmh": self._optional_float(row.get("avg_speed_kmh")),
+            "density_percent": self._optional_float(row.get("density_percent")),
+            "queue_length_veh": self._optional_int(row.get("queue_length_veh")),
+            "green_seconds": self._optional_float(row.get("green_seconds")),
+            "congestion_level": row.get("congestion_level") or None,
+            "weather": row.get("weather") or None,
+            "weather_temp_c": self._optional_float(row.get("weather_temp_c")),
+        }
+
+    def _yolo_payload(self, row: PredictionRow) -> dict[str, object]:
+        """Build frontend-ready YOLO detection metadata."""
+        return {
+            "source": "yolo-vehicle-count-csv",
+            "source_video": row.get("source_video") or None,
+            "detected_video_path": row.get("detected_video_path") or None,
+            "traffic": self._traffic_payload(row),
         }
 
 
