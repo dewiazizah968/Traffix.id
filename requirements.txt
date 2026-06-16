@@ -1,0 +1,67 @@
+# ============================================================
+# Traffix.id — Project Dependencies (Full Pipeline)
+# ============================================================
+# This file lists all dependencies required to run the complete
+# Traffix.id project pipeline, including the backend API, data
+# processing, YOLOv8 pipeline, and LSTM pipeline.
+#
+# The backend API has its own dedicated dependency file at
+# backend/requirements.txt, which is a subset of this file and
+# covers everything needed to run the backend independently.
+#
+# Notebooks (.ipynb) on Google Colab install their dependencies
+# automatically via !pip install ... cells at the beginning of
+# each notebook. This file is primarily used when running the
+# pipeline locally, outside of Google Colab.
+#
+# Installation:
+#   pip install -r requirements.txt
+# ============================================================
+
+# --- Backend API (FastAPI) ---
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+pydantic==2.7.1
+pydantic-settings==2.2.1
+python-dotenv==1.0.1
+httpx==0.27.0
+
+# --- Data processing and numerical computation (used across all pipeline stages) ---
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.6.1
+joblib==1.4.2
+
+# --- Deep learning: LSTM model training and inference ---
+tensorflow==2.16.1
+tf-keras
+
+# --- Computer vision and object detection: YOLOv8 model training and inference ---
+opencv-python-headless==4.9.0.80
+ultralytics>=8.3.0
+torch>=2.0.0
+
+# --- Dataset sources and notebook utilities ---
+kagglehub
+xgboost
+PyYAML
+matplotlib
+seaborn
+tqdm
+holidays
+
+# --- CCTV video data collection (web scraping and stream recording) ---
+playwright
+requests
+
+# After installing Playwright, browser binaries must be installed separately
+# by running:
+#   playwright install chromium
+#
+# The video extraction and recording scripts (data/cctv_stage2_record_videos.py
+# and inference_data/data_video/02_extract_frames.py) also require ffmpeg,
+# which must be installed separately (not via pip) and available on the system PATH.
+
+# --- Testing ---
+pytest==8.2.0
+pytest-asyncio==0.23.6
