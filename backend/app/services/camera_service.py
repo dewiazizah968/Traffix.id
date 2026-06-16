@@ -27,11 +27,18 @@ class CameraService:
             Serializable camera status payload.
         """
         cameras = self.list_cameras()
+        videos_available = sum(1 for camera in cameras if camera.get("video_exists"))
+        predictions_available = sum(
+            1 for camera in cameras if camera.get("prediction_source")
+        )
         return {
             "camera_input_enabled": settings.camera_input_enabled,
             "max_cameras": settings.max_cameras,
             "configured_cameras": len(cameras),
             "active_cameras": sum(1 for camera in cameras if camera["status"] == "active"),
+            "videos_available": videos_available,
+            "videos_missing": len(cameras) - videos_available,
+            "predictions_available": predictions_available,
             "metadata_loaded": self.metadata_path.exists(),
             "prediction_output_loaded": self.prediction_output_available,
             "prediction_output_source": self.prediction_output_source,
@@ -225,12 +232,13 @@ class CameraService:
             or row.get("km_text")
             or camera_id
         ).strip()
-        video_url = self._video_url(period, video_file)
+        expected_video_url = self._video_url(period, video_file)
         video_exists = (
             self.resolve_video_path(period, video_file) is not None
             if period and video_file
             else False
         )
+        video_url = expected_video_url if video_exists else None
 
         payload: dict[str, object] = {
             "camera_id": camera_id,
@@ -239,8 +247,12 @@ class CameraService:
             "status": "active" if video_exists else "metadata-only",
             "stream_url": video_url,
             "video_url": video_url,
+            "expected_video_url": expected_video_url,
             "video_file": video_file or None,
             "video_exists": video_exists,
+            "video_placeholder_required": not video_exists,
+            "video_status": "ready" if video_exists else "missing",
+            "video_format_hint": "Browser-safe MP4 (H.264 video, AAC audio)",
             "video_library_url": settings.camera_video_library_url,
             "recorded_at": row.get("timestamp_wib") or None,
             "period": period or None,
