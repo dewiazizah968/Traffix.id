@@ -192,11 +192,11 @@ class Settings(BaseSettings):
         description="Path to the Data team feature column manifest",
     )
     prediction_output_path: str = Field(
-        default="../inference/outputs/prediction_output.csv",
+        default="../inference/inference_lstm/traffix_lstm_inference_outputs/lstm_prediction_output.csv",
         description="Path to the latest LSTM video prediction output",
     )
     prediction_output_json_path: str = Field(
-        default="../inference/outputs/prediction_output.json",
+        default="../inference/inference_lstm/traffix_lstm_inference_outputs/lstm_prediction_output.json",
         description="Path to the latest LSTM video prediction JSON output",
     )
 
@@ -230,8 +230,8 @@ class Settings(BaseSettings):
         description="Maximum number of camera streams supported",
     )
     camera_metadata_path: str = Field(
-        default="../inference_data/data_video/metadata/video_metadata_with_coordinates.csv",
-        description="Path to validated CCTV video metadata",
+        default="../inference_data/data_video/metadata/video_weather_data.csv",
+        description="Path to validated CCTV video metadata with weather enrichment",
     )
     camera_video_root_path: str = Field(
         default="../inference_data/data_video/video_input",
