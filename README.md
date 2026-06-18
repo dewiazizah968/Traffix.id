@@ -2,8 +2,9 @@
 
 **AI-based traffic monitoring and prediction system** that combines **YOLOv8**-based
 vehicle detection with **LSTM**-based multi-horizon traffic volume forecasting,
-enriched with weather data and national public holiday indicators, and served
-through a **FastAPI** backend with an adaptive signal timing recommendation engine.
+enriched with weather data and national public holiday indicators, served through
+a **FastAPI** backend with an adaptive signal timing recommendation engine, and
+visualized through a **React + TypeScript** web dashboard.
 
 ---
 
@@ -13,12 +14,13 @@ through a **FastAPI** backend with an adaptive signal timing recommendation engi
 2. [Project Directory Structure](#project-directory-structure)
 3. [System Pipeline](#system-pipeline)
 4. [Model Download & Loading](#model-download--loading)
-5. [Project Dependencies](#project-dependencies)
-6. [Supporting Configuration](#supporting-configuration)
-7. [Environment Setup](#environment-setup)
-8. [Running the Application](#running-the-application)
-9. [Testing](#testing)
-10. [Additional Documentation](#additional-documentation)
+5. [Frontend Application](#frontend-application)
+6. [Project Dependencies](#project-dependencies)
+7. [Supporting Configuration](#supporting-configuration)
+8. [Environment Setup](#environment-setup)
+9. [Running the Application](#running-the-application)
+10. [Testing](#testing)
+11. [Additional Documentation](#additional-documentation)
 
 ---
 
@@ -37,6 +39,10 @@ in Indonesia. It combines two core machine learning models:
 The detection and prediction results are consumed by a **FastAPI backend** that
 provides a REST API for per-intersection traffic status, multi-horizon predictions,
 weather context, and **rule-based adaptive green light duration recommendations**.
+These results are then visualized in real time through a **React + TypeScript
+web dashboard** (`frontend/`), which displays live intersection metrics, prediction
+charts, an interactive map, camera feeds, and a recommendation approval workflow
+for traffic operators.
 
 Current model performance summary (see [Model Download & Loading](#model-download--loading)
 for full details):
@@ -50,8 +56,8 @@ for full details):
 | LSTM — 4-hour horizon | MAPE (test set) | ≈ 32.5% |
 
 This project is developed in a modular, stage-by-stage manner (data collection →
-preprocessing → YOLO training → LSTM training → inference → backend API),
-so each component can be run and tested independently.
+preprocessing → YOLO training → LSTM training → inference → backend API →
+frontend dashboard), so each component can be run and tested independently.
 
 ## Project Directory Structure
 
@@ -68,6 +74,20 @@ Traffix.id/
 │   ├── .env.example             # Backend environment template
 │   ├── requirements.txt         # Backend dependencies
 │   └── README.md / ARCHITECTURE.md / CONTRIBUTING.md
+├── frontend/                     # React + TypeScript web dashboard (Vite)
+│   ├── src/
+│   │   ├── pages/                # Dashboard, LiveMap, Login, Settings
+│   │   ├── components/
+│   │   │   ├── dashboard/        # IntersectionCard, MetricCard, PredictionChart,
+│   │   │   │                     # RecommendationPanel, ManualSignalAdjust, CameraGrid
+│   │   │   └── layout/           # Navbar, NotificationBell
+│   │   ├── hooks/useTraffixData.ts  # React Query hooks for all backend endpoints
+│   │   ├── lib/                  # api.ts (Axios client), AuthContext, ThemeContext, videoMap
+│   │   ├── types/index.ts        # Shared TypeScript types (mirrors backend schemas)
+│   │   └── main.tsx / App.tsx
+│   ├── public/                   # Static assets (logo, icons, favicon)
+│   ├── package.json              # Frontend dependencies & scripts
+│   └── vite.config.ts / tsconfig*.json / tailwind.config.js / eslint.config.js
 ├── yolo pipeline/                # YOLOv8 training pipeline
 │   ├── code/                     # Training notebook (Colab)
 │   ├── config/data.yaml          # YOLO dataset configuration
@@ -117,6 +137,11 @@ CCTV Video
    ▼
 [FastAPI Backend]  →  REST API (intersections, predictions, recommendations,
                         weather, simulation, cameras)
+   │
+   ▼
+[React + TypeScript Frontend]  →  web dashboard (live metrics, prediction charts,
+                                    interactive map, camera feeds, recommendation
+                                    approval workflow)
 ```
 
 In the current configuration, the backend runs a replay simulation from a
@@ -217,11 +242,70 @@ test set MAPE of ≈ 21.8%.
 > so after a full repo clone, **no manual download step is required** —
 > the backend reads these artifacts directly from the `LSTM Training/artifacts/` folder.
 
+## Frontend Application
+
+`frontend/` is a **React 19 + TypeScript** single-page application, bundled
+with **Vite** and styled with **Tailwind CSS**, that serves as the operator-facing
+web dashboard for Traffix.id. It consumes the FastAPI backend's REST API
+(see [Running the Backend API](#1-running-the-backend-api-fastapi)) and
+polls it continuously (every 1 second for live traffic data, every 30 seconds
+for weather) to render an up-to-date view of intersection conditions.
+
+**Key libraries:**
+
+| Library | Purpose |
+|---|---|
+| `@tanstack/react-query` | Data fetching, caching, and polling for all backend endpoints |
+| `axios` | HTTP client (`src/lib/api.ts`), base URL configurable via `VITE_API_URL` |
+| `react-leaflet` / `leaflet` | Interactive map on the Live Map page |
+| `recharts` | LSTM multi-horizon prediction line charts |
+| `tailwindcss` | Utility-first styling (combined with CSS-variable-based theming) |
+
+**Pages (`src/pages/`):**
+
+- **Login** — entry screen with a client-side dummy authentication (stored in
+  `localStorage`, no backend auth endpoint involved). Default demo credentials:
+  username `admin`, password `admin123`.
+- **Dashboard** — main operator view: aggregate KPI cards (total vehicles,
+  average speed, active intersections), per-intersection cards, LSTM
+  multi-horizon prediction charts, the AI recommendation approval panel, a
+  manual signal override control, and a live camera feed grid.
+- **Live Map** — Leaflet map plotting the four monitored intersections with
+  color-coded congestion and signal-state badges.
+- **Settings** — displays backend system status (ML/weather/simulation/camera
+  readiness) and exposes simulation start/stop controls.
+
+**Notable components (`src/components/`):**
+
+- `layout/Navbar.tsx` — page navigation tabs, live "Operational/Idle" status
+  pill, notification bell, dark/light theme toggle, and logout control.
+- `layout/NotificationBell.tsx` — surfaces client-derived alerts (e.g.
+  congestion threshold crossings) computed from polled intersection data.
+- `dashboard/RecommendationPanel.tsx` — approve/reject/simulate workflow for
+  AI-generated green-light duration recommendations.
+- `dashboard/ManualSignalAdjust.tsx` — manual green-light duration override
+  per intersection, calling the backend's manual-override endpoints.
+- `dashboard/PredictionChart.tsx` / `CameraGrid.tsx` / `IntersectionCard.tsx` /
+  `MetricCard.tsx` — prediction visualization, camera feed display, and
+  per-intersection/aggregate metric displays.
+
+**Configuration:** the only environment variable used is `VITE_API_URL`
+(defaults to `http://localhost:8000` if unset), which points the frontend to
+the FastAPI backend. There is currently no `.env.example` file for the
+frontend, so set this directly in a `frontend/.env` file (e.g.
+`VITE_API_URL=http://localhost:8000`) if the backend runs on a different host
+or port.
+
+> See [Running the Frontend](#2-running-the-frontend-web-dashboard) for setup
+> and run instructions.
+
 ## Project Dependencies
 
-This project is purely Python-based (Jupyter notebooks + FastAPI backend), with
-no Node.js/React frontend components, so there is no `package.json` or
-`tsconfig.json`. Dependencies are managed via `requirements.txt` files:
+This project has two dependency stacks: a **Python** stack for the data
+processing pipeline, YOLO/LSTM notebooks, and the FastAPI backend, and a
+**Node.js** stack for the React frontend.
+
+**Python dependencies** are managed via `requirements.txt` files:
 
 | File | Scope | When to use |
 |---|---|---|
@@ -232,6 +316,11 @@ Notebooks (`.ipynb`) in Google Colab install their own dependencies via
 `!pip install ...` cells at the beginning of each notebook, so the
 `requirements.txt` files above are primarily needed when running the pipeline
 **locally** (not in Colab).
+
+**Node.js dependencies** for the frontend are managed via `frontend/package.json`
+(see [Frontend Application](#frontend-application) for the key libraries used).
+Install them with `npm install` inside `frontend/` — see
+[Environment Setup](#environment-setup) for the full setup flow.
 
 Non-Python system-level dependencies required for the CCTV video data collection stage:
 
@@ -244,10 +333,14 @@ Non-Python system-level dependencies required for the CCTV video data collection
 
 | File | Location | Purpose |
 |---|---|---|
-| `.gitignore` | root | Ignores Python cache, virtual environments, logs, and temporary outputs (video/CCTV) across the full pipeline |
+| `.gitignore` | root | Ignores Python cache, virtual environments, logs, temporary outputs (video/CCTV), and `frontend/node_modules` across the full pipeline |
 | `backend/.gitignore` | `backend/` | Ignores `.env`, ML artifacts (`*.keras`, `*.joblib`), and large CSV datasets inside the backend folder |
 | `backend/.env.example` | `backend/` | Backend environment variable template (see setup section below) |
 | `backend/pytest.ini` | `backend/` | pytest configuration (test paths, asyncio mode) |
+| `frontend/vite.config.ts` | `frontend/` | Vite build/dev server configuration (React plugin) |
+| `frontend/tsconfig*.json` | `frontend/` | TypeScript compiler configuration (app + Node split configs) |
+| `frontend/tailwind.config.js` / `postcss.config.js` | `frontend/` | Tailwind CSS content scanning & PostCSS pipeline |
+| `frontend/eslint.config.js` | `frontend/` | ESLint rules (React Hooks, React Refresh, TypeScript-ESLint) |
 | `.github/workflows/backend-ci.yml` | `.github/workflows/` | Automated CI: install dependencies & run backend tests on every push/PR |
 
 ## Environment Setup
@@ -271,7 +364,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-### 3. Install Dependencies
+### 3. Install Backend / Pipeline Dependencies (Python)
 
 To run the **full pipeline** (data processing, YOLO, LSTM, backend) locally:
 
@@ -286,7 +379,16 @@ cd backend
 pip install -r requirements.txt
 ```
 
-### 4. Configure the Backend Environment File
+### 4. Install Frontend Dependencies (Node.js)
+
+Requires **Node.js 20.19+ or 22.12+** (the version range required by Vite 8).
+
+```bash
+cd frontend
+npm install
+```
+
+### 5. Configure the Backend Environment File
 
 ```bash
 cd backend
@@ -297,6 +399,10 @@ Adjust values in `.env` if needed (e.g. `PORT`, `CORS_ORIGINS`, or model paths
 if the folder structure is relocated). For local development using the default
 repository folder structure, the default values in `.env.example` are correct
 and do not need to be changed.
+
+> The frontend has no `.env.example` file; it only reads one optional variable,
+> `VITE_API_URL`, which defaults to `http://localhost:8000` if not set (see
+> [Frontend Application](#frontend-application)).
 
 ## Running the Application
 
@@ -330,7 +436,40 @@ Main endpoint summary (full details in `backend/README.md`):
 | `POST /api/v1/simulation/start` / `/stop` | Simulation controls |
 | `GET /api/v1/cameras` | List of camera slots per intersection |
 
-### 2. Running the YOLOv8 Pipeline (Training & Inference)
+### 2. Running the Frontend (Web Dashboard)
+
+Make sure the backend (step 1 above) is running first, since the frontend has
+no data of its own and relies entirely on the backend's REST API.
+
+```bash
+cd frontend
+npm run dev
+```
+
+The dashboard will be available at `http://localhost:5173` (Vite's default
+dev server port). On first load:
+
+1. Log in with the demo credentials: username `admin`, password `admin123`
+   (this is a client-side dummy login only, not validated by the backend).
+2. The **Dashboard** page loads live intersection metrics, prediction charts,
+   and AI recommendations, polling the backend every 1 second.
+3. Use the **Live Map** tab for a geographic view of the four monitored
+   intersections, or **Settings** to check system status and start/stop the
+   backend's replay simulation.
+
+If the backend runs on a different host/port than `http://localhost:8000`,
+create `frontend/.env` with `VITE_API_URL=<your-backend-url>` before starting
+the dev server.
+
+Other available scripts (run from `frontend/`):
+
+| Command | Purpose |
+|---|---|
+| `npm run build` | Type-check (`tsc -b`) and build a production bundle to `frontend/dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint over the codebase |
+
+### 3. Running the YOLOv8 Pipeline (Training & Inference)
 
 **Training** (rebuilding `best.pt` from scratch):
 
@@ -351,7 +490,7 @@ Main endpoint summary (full details in `backend/README.md`):
 4. Output: `vehicle_count.csv` — per-video traffic features, which serve as
    input for the LSTM inference pipeline.
 
-### 3. Running the LSTM Pipeline (Training & Inference)
+### 4. Running the LSTM Pipeline (Training & Inference)
 
 **Training:**
 
@@ -374,7 +513,7 @@ Main endpoint summary (full details in `backend/README.md`):
    AI-based insights and recommendations.
 4. Output: `lstm_prediction_output.csv`/`.json` and `lstm_inference_summary.json`.
 
-### 4. Running Data Collection & Processing Scripts
+### 5. Running Data Collection & Processing Scripts
 
 CCTV video data pipeline sequence (see `inference_data/data_video/video_data.md`
 for full details):
@@ -411,6 +550,13 @@ pytest -q
 Backend tests also run automatically via GitHub Actions
 (`.github/workflows/backend-ci.yml`) on every push or pull request that
 touches the `backend/` folder.
+
+The frontend does not yet have a dedicated test suite; static checks are run via ESLint:
+
+```bash
+cd frontend
+npm run lint
+```
 
 ## Additional Documentation
 
