@@ -227,3 +227,5 @@ output_stage2_videos/
 *.mkv
 .venv/
 __pycache__/
+
+frontend/node_modules
