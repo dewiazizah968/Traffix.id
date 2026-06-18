@@ -24,16 +24,20 @@ export const Dashboard = () => {
   // Fetch all camera data in a single request
   const { camerasMap, cameras: allCameras } = useAllCameras();
 
-  const totalVehicles = allCameras.length
-    ? allCameras.reduce(
+  const activeCameras = intersections
+    .map((ix) => camerasMap[ix.intersection_id])
+    .filter(Boolean);
+
+  const totalVehicles = activeCameras.length
+    ? activeCameras.reduce(
         (s, c) => s + (c?.traffic?.vehicle_count ?? 0),
         0,
       )
     : intersections.reduce((s, i) => s + i.vehicle_count, 0);
-  const avgSpeed = allCameras.length
+  const avgSpeed = activeCameras.length
     ? (
-        allCameras.reduce((s, c) => s + (c?.traffic?.avg_speed_kmh ?? 0), 0) /
-        allCameras.length
+        activeCameras.reduce((s, c) => s + (c?.traffic?.avg_speed_kmh ?? 0), 0) /
+        activeCameras.length
       ).toFixed(0)
     : intersections.length
       ? (
