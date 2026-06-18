@@ -4,10 +4,9 @@ import {
   useRecommendations,
   useWeather,
   useSystemStatus,
-  useCameraByVideo,
-  useAllCamerasByVideo,
+  useAllCameras,
 } from "../hooks/useTraffixData";
-import { getVideoUrl } from "../lib/videoMap";
+import { buildVideoUrl } from "../lib/videoMap";
 import { MetricCard } from "../components/dashboard/MetricCard";
 import { IntersectionCard } from "../components/dashboard/IntersectionCard";
 import { RecommendationPanel } from "../components/dashboard/RecommendationPanel";
@@ -22,9 +21,8 @@ export const Dashboard = () => {
   const { data: status } = useSystemStatus();
   const [selected, setSelected] = useState<Intersection | null>(null);
 
-  // Get video URLs for all intersections and fetch their YOLO/LSTM predictions
-  const videoUrls = intersections.map((ix) => getVideoUrl(ix.intersection_id));
-  const allCameras = useAllCamerasByVideo(videoUrls);
+  // Fetch all camera data in a single request
+  const { camerasMap, cameras: allCameras } = useAllCameras();
 
   const totalVehicles = allCameras.length
     ? allCameras.reduce(
@@ -163,6 +161,7 @@ export const Dashboard = () => {
                 key={ix.intersection_id}
                 intersection={ix}
                 onClick={() => setSelected(ix)}
+                cameraData={camerasMap[ix.intersection_id]}
               />
             ))}
           </div>
@@ -288,8 +287,9 @@ const PredictionModal = ({
   ix: Intersection;
   onClose: () => void;
 }) => {
-  const videoUrl = getVideoUrl(ix.intersection_id);
-  const { data: camera } = useCameraByVideo(videoUrl);
+  const { camerasMap } = useAllCameras();
+  const camera = camerasMap[ix.intersection_id];
+  const videoUrl = buildVideoUrl(camera?.expected_video_url, camera?.video_exists);
 
   useEffect(() => {
     const fn = (e: KeyboardEvent) => {

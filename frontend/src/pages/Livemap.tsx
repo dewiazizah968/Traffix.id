@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useIntersections } from "../hooks/useTraffixData";
-import { getVideoUrl } from "../lib/videoMap";
+import { useIntersections, useAllCameras } from "../hooks/useTraffixData";
+import { buildVideoUrl } from "../lib/videoMap";
 import { PredictionChart } from "../components/dashboard/PredictionChart";
 import type { Intersection } from "../types";
 
@@ -44,6 +44,7 @@ export const LiveMap = () => {
   const mapInstanceRef = useRef<any>(null);
   const markersRef = useRef<Record<string, any>>({});
   const { data: intersections = [] } = useIntersections();
+  const { camerasMap } = useAllCameras();
   const [selected, setSelected] = useState<Intersection | null>(null);
 
   // Init map
@@ -270,7 +271,8 @@ export const LiveMap = () => {
         (() => {
           const b = badge(selected.occupancy_rate);
           const sc = sigColor(selected.signal_state);
-          const videoUrl = getVideoUrl(selected.intersection_id);
+          const selectedCamera = camerasMap[selected.intersection_id];
+          const videoUrl = buildVideoUrl(selectedCamera?.expected_video_url, selectedCamera?.video_exists);
 
           return (
             <>

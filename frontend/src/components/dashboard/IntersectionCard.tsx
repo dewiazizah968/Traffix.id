@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import {
   useWeatherByIntersection,
-  useCameraByVideo,
+  useCameraByIntersection,
 } from "../../hooks/useTraffixData";
-import { getVideoUrl } from "../../lib/videoMap";
+import { buildVideoUrl } from "../../lib/videoMap";
 import type { Intersection } from "../../types";
 
 const badge = (rate: number) => {
@@ -47,29 +47,38 @@ const sigColor = (s: string) => {
 export const IntersectionCard = ({
   intersection: ix,
   onClick,
+  cameraData,
 }: {
   intersection: Intersection;
   onClick?: () => void;
+  cameraData?: any;
 }) => {
   const { data: weather } = useWeatherByIntersection(ix.intersection_id);
-  const [videoUrl, setVideoUrl] = useState<string | null>(
-    getVideoUrl(ix.intersection_id),
-  );
-  const { data: camera } = useCameraByVideo(videoUrl);
+  // Use cameraData prop if provided (from parent's useAllCameras), otherwise fetch individually
+  const { data: fetchedCamera } = useCameraByIntersection(cameraData ? "" : ix.intersection_id);
+  const camera = cameraData ?? fetchedCamera;
+
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const b = badge(ix.occupancy_rate);
   const videoRetries = useRef(0);
 
-  // Refresh video setiap 3 menit
+  // Update video URL whenever camera data changes
+  useEffect(() => {
+    videoRetries.current = 0;
+    setVideoUrl(buildVideoUrl(camera?.expected_video_url, camera?.video_exists));
+  }, [camera?.expected_video_url, camera?.video_exists]);
+
+  // Refresh video every 3 minutes (cache bust)
   useEffect(() => {
     const interval = setInterval(
       () => {
         videoRetries.current = 0;
-        setVideoUrl(getVideoUrl(ix.intersection_id));
+        setVideoUrl(buildVideoUrl(camera?.expected_video_url, camera?.video_exists));
       },
       3 * 60 * 1000,
     );
     return () => clearInterval(interval);
-  }, [ix.intersection_id]);
+  }, [camera?.expected_video_url, camera?.video_exists]);
 
   const weatherIcon: Record<string, string> = {
     Sunny: "☀️",
@@ -191,7 +200,7 @@ export const IntersectionCard = ({
                 videoRetries.current += 1;
                 if (videoRetries.current < 3) {
                   // Retry: re-fetch same URL with cache-bust
-                  const base = getVideoUrl(ix.intersection_id);
+                  const base = buildVideoUrl(camera?.expected_video_url, camera?.video_exists);
                   setVideoUrl(base ? `${base}?t=${Date.now()}` : null);
                 } else {
                   setVideoUrl(null);

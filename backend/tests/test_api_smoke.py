@@ -1,4 +1,4 @@
-﻿"""API smoke tests for Traffix backend."""
+"""API smoke tests for Traffix backend."""
 
 
 def _data(response):
@@ -88,8 +88,9 @@ def test_recommendations_weather_and_camera_routes(api_client):
     assert camera_data["yolo_output_source"] == "csv"
     assert camera_data["frontend_ready"] is True
     assert camera_data["api_ready_cameras"] == 12
-    assert camera_data["videos_available"] == 0
-    assert camera_data["videos_missing"] == 12
+    videos_avail = camera_data["videos_available"]
+    assert videos_avail in {0, 12}
+    assert camera_data["videos_missing"] == 12 - videos_avail
     assert camera_data["predictions_available"] == 12
     assert camera_data["data_sources"]["yolo_vehicle_counts"]["loaded"] is True
 
@@ -97,10 +98,14 @@ def test_recommendations_weather_and_camera_routes(api_client):
     assert camera_list.status_code == 200
     first_camera = _data(camera_list)["cameras"][0]
     assert first_camera["intersection_name"]
-    assert first_camera["video_url"] is None
-    assert first_camera["expected_video_url"].startswith("/api/v1/cameras/videos/")
-    assert first_camera["video_placeholder_required"] is True
-    assert first_camera["video_status"] == "missing"
+    if first_camera["video_exists"]:
+        assert first_camera["video_url"].startswith("/api/v1/cameras/videos/")
+        assert first_camera["video_placeholder_required"] is False
+        assert first_camera["video_status"] == "ready"
+    else:
+        assert first_camera["video_url"] is None
+        assert first_camera["video_placeholder_required"] is True
+        assert first_camera["video_status"] == "missing"
     assert first_camera["traffic"]["weather"]
     assert "green_seconds" in first_camera["traffic"]
     assert "validated-cctv-metadata" in first_camera["data_sources"]

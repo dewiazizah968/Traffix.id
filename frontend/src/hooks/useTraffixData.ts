@@ -145,6 +145,36 @@ export const useAllCamerasByVideo = (videoUrls: (string | null)[]) => {
   return queries.map((q) => q.data).filter(Boolean);
 };
 
+/**
+ * Fetch ALL cameras in a single request, returning a map indexed by intersection_id.
+ * Each camera object includes `expected_video_url`, `video_exists`, `traffic`, etc.
+ */
+export const useAllCameras = () => {
+  const query = useQuery({
+    queryKey: ["all-cameras"],
+    queryFn: () =>
+      api
+        .get("/api/v1/cameras")
+        .then(unwrap<{ count: number; cameras: any[] }>),
+    refetchInterval: 5000,
+  });
+
+  const camerasMap: Record<string, any> = {};
+  if (query.data?.cameras) {
+    for (const cam of query.data.cameras) {
+      if (cam.intersection_id) {
+        camerasMap[cam.intersection_id] = cam;
+      }
+    }
+  }
+
+  return {
+    camerasMap,
+    cameras: query.data?.cameras ?? [],
+    isLoading: query.isLoading,
+  };
+};
+
 export const useSimulationControls = () => {
   const qc = useQueryClient();
   const invalidate = () => {

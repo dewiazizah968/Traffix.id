@@ -1,4 +1,4 @@
-﻿"""Camera and YOLO readiness service."""
+"""Camera and YOLO readiness service."""
 
 from __future__ import annotations
 
@@ -184,9 +184,23 @@ class CameraService:
 
         root = self.video_root_path.resolve()
         candidate = (root / period / filename).resolve()
-        if root not in candidate.parents or not candidate.exists():
-            return None
-        return candidate
+        if root in candidate.parents and candidate.exists():
+            return candidate
+
+        # Try with detected_ prefix if not already present
+        if not filename.startswith("detected_"):
+            candidate_detected = (root / period / f"detected_{filename}").resolve()
+            if root in candidate_detected.parents and candidate_detected.exists():
+                return candidate_detected
+
+        # Try stripping detected_ prefix if present
+        if filename.startswith("detected_"):
+            stripped_name = filename[len("detected_"):]
+            candidate_stripped = (root / period / stripped_name).resolve()
+            if root in candidate_stripped.parents and candidate_stripped.exists():
+                return candidate_stripped
+
+        return None
 
     def _list_metadata_cameras(self) -> list[dict[str, object]]:
         """Build camera API rows from validated CCTV metadata."""
@@ -334,9 +348,17 @@ class CameraService:
         if video_exists:
             data_sources.append("backend-video-storage")
 
+        # Resolve intersection_id by matching name with simulation intersections
+        resolved_intersection_id = (row.get("camera_key") or camera_id).strip()
+        target_name = camera_label.strip().casefold()
+        for intersection in state_store.get_all_states():
+            if intersection["intersection_name"].strip().casefold() == target_name:
+                resolved_intersection_id = intersection["intersection_id"]
+                break
+
         payload: dict[str, object] = {
             "camera_id": camera_id,
-            "intersection_id": row.get("camera_key") or camera_id,
+            "intersection_id": resolved_intersection_id,
             "intersection_name": camera_label,
             "status": "active" if video_exists else "metadata-only",
             "stream_url": video_url,
