@@ -1,0 +1,58 @@
+services:
+  - type: web
+    name: traffix-backend
+    runtime: python
+    region: singapore
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: LOG_LEVEL
+        value: info
+      - key: CORS_ORIGINS
+        sync: false   # isi manual di dashboard Render setelah FE di-deploy
+      - key: ML_AUTO_LOAD
+        value: "true"
+      - key: ML_ALLOW_FALLBACK
+        value: "true"
+      - key: SIMULATION_AUTO_START
+        value: "true"
+      - key: TICK_INTERVAL_SECONDS
+        value: "2"
+      - key: SIM_INTERSECTIONS
+        value: "4"
+      - key: CAMERA_INPUT_ENABLED
+        value: "false"
+      - key: MAX_CAMERAS
+        value: "16"
+      # Path relatif dari folder backend/ ke root repo
+      - key: LSTM_15M_PATH
+        value: ../LSTM Training/artifacts/best_lstm_15m.keras
+      - key: LSTM_2H_PATH
+        value: ../LSTM Training/artifacts/best_lstm_2h.keras
+      - key: LSTM_4H_PATH
+        value: ../LSTM Training/artifacts/best_lstm_4h.keras
+      - key: LSTM_CONFIG_PATH
+        value: ../LSTM Training/artifacts/best_config.json
+      - key: FEAT_SCALER_PATH
+        value: ../LSTM Training/artifacts/feat_scaler.joblib
+      - key: TARGET_SCALER_PATH
+        value: ../LSTM Training/artifacts/target_scalers.joblib
+      - key: HYBRID_TRAFFIC_DATASET_PATH
+        value: ../data/data_synthetic/hybrid_traffic_7d.csv
+      - key: FEATURE_COLUMNS_PATH
+        value: ../data/data_process/feature_columns.json
+      - key: YOLO_VEHICLE_COUNT_PATH
+        value: ../inference/inference_yolo/vehicle_count.csv
+      - key: CAMERA_METADATA_PATH
+        value: ../inference_data/data_video/metadata/video_weather_data.csv
+      - key: CAMERA_VIDEO_ROOT_PATH
+        value: ../inference_data/data_video/video_input
+      - key: CAMERA_VIDEO_LIBRARY_URL
+        value: https://drive.google.com/drive/folders/1qJQ_B9wZP_kuzXoqaEtjVzBwLJTw3a0g?usp=sharing
+      - key: BMKG_API_URL
+        value: https://api.bmkg.go.id/publik/prakiraan-cuaca
