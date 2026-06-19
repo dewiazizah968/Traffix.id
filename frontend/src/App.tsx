@@ -31,13 +31,7 @@ function AppShell() {
       <Navbar page={page} onNavigate={setPage} />
       <main style={{ flex: 1, overflow: "auto" }}>
         {page === "dashboard" && <Dashboard />}
-        {page === "map" && (
-          <LiveMap
-            onSelectIntersection={() => {
-              setPage("dashboard");
-            }}
-          />
-        )}
+        {page === "map" && <LiveMap />}
         {page === "settings" && <Settings />}
       </main>
     </div>
