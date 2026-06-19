@@ -245,6 +245,20 @@ class Settings(BaseSettings):
         default="https://drive.google.com/drive/folders/1qJQ_B9wZP_kuzXoqaEtjVzBwLJTw3a0g?usp=sharing",
         description="Fallback external video library URL",
     )
+    google_service_account_json: str | None = Field(
+        default=None,
+        description=(
+            "Raw JSON content of a Google service account key, used to "
+            "authenticate with the Drive API for on-demand video caching"
+        ),
+    )
+    camera_video_drive_folder_id: str | None = Field(
+        default=None,
+        description=(
+            "Google Drive folder id containing pagi/siang/malam subfolders "
+            "of CCTV videos, used to auto-download videos missing locally"
+        ),
+    )
 
     @field_validator("cors_origins", mode="before")
     @classmethod

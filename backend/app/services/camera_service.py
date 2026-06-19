@@ -178,13 +178,31 @@ class CameraService:
         return cameras
 
     def resolve_video_path(self, period: str, filename: str) -> Path | None:
-        """Resolve a requested video filename inside the configured video root."""
+        """Resolve a requested video filename inside the configured video root.
+
+        Falls back to downloading the video from Google Drive into local
+        cache (see ``drive_video_service``) when it isn't present locally
+        and Drive caching is configured.
+        """
         if not filename.lower().endswith(".mp4"):
             return None
 
         root = self.video_root_path.resolve()
         candidate = (root / period / filename).resolve()
-        if root not in candidate.parents or not candidate.exists():
+        if root not in candidate.parents:
+            return None
+
+        if not candidate.exists():
+            from app.services.drive_video_service import ensure_video_cached
+
+            cached = ensure_video_cached(period, filename)
+            if cached is None:
+                return None
+            candidate = cached.resolve()
+            if root not in candidate.parents:
+                return None
+
+        if not candidate.exists():
             return None
         return candidate
 
