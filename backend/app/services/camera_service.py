@@ -178,12 +178,33 @@ class CameraService:
         return cameras
 
     def resolve_video_path(self, period: str, filename: str) -> Path | None:
-        """Resolve a requested video filename inside the configured video root.
+        """Resolve a requested video filename against local cache only.
 
-        Falls back to downloading the video from Google Drive into local
-        cache (see ``drive_video_service``) when it isn't present locally
-        and Drive caching is configured.
+        This is the fast, non-blocking check used when building camera
+        listings/status (called frequently by simulation ticks). It never
+        contacts Google Drive. Use ``resolve_video_path_with_drive_fetch``
+        when actually serving a video file to a client.
         """
+        if not filename.lower().endswith(".mp4"):
+            return None
+
+        root = self.video_root_path.resolve()
+        candidate = (root / period / filename).resolve()
+        if root not in candidate.parents or not candidate.exists():
+            return None
+        return candidate
+
+    def resolve_video_path_with_drive_fetch(self, period: str, filename: str) -> Path | None:
+        """Resolve a video path, downloading it from Drive if not cached locally.
+
+        This performs blocking network I/O and should only be called from
+        the dedicated video-serving route, never from listing/status code
+        paths that run on every simulation tick.
+        """
+        local = self.resolve_video_path(period, filename)
+        if local is not None:
+            return local
+
         if not filename.lower().endswith(".mp4"):
             return None
 
@@ -192,17 +213,13 @@ class CameraService:
         if root not in candidate.parents:
             return None
 
-        if not candidate.exists():
-            from app.services.drive_video_service import ensure_video_cached
+        from app.services.drive_video_service import ensure_video_cached
 
-            cached = ensure_video_cached(period, filename)
-            if cached is None:
-                return None
-            candidate = cached.resolve()
-            if root not in candidate.parents:
-                return None
-
-        if not candidate.exists():
+        cached = ensure_video_cached(period, filename)
+        if cached is None:
+            return None
+        candidate = cached.resolve()
+        if root not in candidate.parents or not candidate.exists():
             return None
         return candidate
 

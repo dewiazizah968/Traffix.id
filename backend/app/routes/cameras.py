@@ -63,9 +63,13 @@ async def list_cameras(request: Request) -> StandardSuccessResponse:
     summary="Get Camera Video",
     description="Serves a recorded CCTV video from backend-managed storage.",
 )
-async def get_camera_video(period: str, filename: str) -> FileResponse:
-    """Return a recorded CCTV video file when available."""
-    video_path = camera_service.resolve_video_path(period, filename)
+def get_camera_video(period: str, filename: str) -> FileResponse:
+    """Return a recorded CCTV video file, fetching it from Drive if needed.
+
+    Defined as a sync function so FastAPI runs it in a worker thread,
+    keeping the blocking Drive download off the main event loop.
+    """
+    video_path = camera_service.resolve_video_path_with_drive_fetch(period, filename)
     if video_path is None:
         raise HTTPException(status_code=404, detail="Video file not found")
     return FileResponse(
