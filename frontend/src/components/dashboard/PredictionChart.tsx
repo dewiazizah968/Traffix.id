@@ -7,7 +7,6 @@ import {
   CartesianGrid,
   ResponsiveContainer,
   ReferenceLine,
-  Dot,
 } from "recharts";
 import { usePredictions } from "../../hooks/useTraffixData";
 

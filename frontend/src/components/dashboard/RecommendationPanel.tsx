@@ -76,7 +76,7 @@ const congestionColor: Record<string, string> = {
 
 const MetricRow = ({
   icon,
-  label,
+  label: _label,
   before,
   after,
   unit,

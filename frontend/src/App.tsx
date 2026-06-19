@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Navbar } from "./components/layout/Navbar";
 import { Dashboard } from "./pages/Dashboard";
 import { Settings } from "./pages/Settings";
-import { LiveMap } from "./pages/LiveMap";
+import { LiveMap } from "./pages/Livemap";
 import { LoginPage } from "./pages/Login";
 import { ThemeProvider } from "./lib/ThemeContext";
 import { AuthProvider, useAuth } from "./lib/AuthContext";
